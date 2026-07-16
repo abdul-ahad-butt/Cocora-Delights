@@ -360,7 +360,8 @@ const submitOrder = async () => {
 
   try {
     const config = useRuntimeConfig();
-    const res = await fetch(config.public.apiBase + '/api/orders', {
+    const baseUrl = config.public.apiBase.startsWith('http') ? config.public.apiBase : `https://${config.public.apiBase}`;
+    const res = await fetch(baseUrl + '/api/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

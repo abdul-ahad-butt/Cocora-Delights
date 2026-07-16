@@ -374,7 +374,8 @@ const handleNewsletter = async () => {
   
   try {
     const config = useRuntimeConfig();
-    const res = await fetch(config.public.apiBase + '/api/newsletter', {
+    const baseUrl = config.public.apiBase.startsWith('http') ? config.public.apiBase : `https://${config.public.apiBase}`;
+    const res = await fetch(baseUrl + '/api/newsletter', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

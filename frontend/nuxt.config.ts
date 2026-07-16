@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'https://cocoradelights.jerrystankas087.workers.dev'
+      apiBase: process.env.NUXT_PUBLIC_API_BASE ? (process.env.NUXT_PUBLIC_API_BASE.startsWith('http') ? process.env.NUXT_PUBLIC_API_BASE : `https://${process.env.NUXT_PUBLIC_API_BASE}`) : 'https://cocoradelights.jerrystankas087.workers.dev'
     }
   },
 

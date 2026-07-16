@@ -446,7 +446,8 @@ const signatureCollectionsFromAPI = ref([]);
 onMounted(async () => {
   try {
     const config = useRuntimeConfig();
-    const res = await fetch(config.public.apiBase + '/api/signature-collections');
+    const baseUrl = config.public.apiBase.startsWith('http') ? config.public.apiBase : `https://${config.public.apiBase}`;
+    const res = await fetch(baseUrl + '/api/signature-collections');
     const json = await res.json();
     if (json.success && json.data.length > 0) {
       signatureCollectionsFromAPI.value = json.data;

@@ -379,7 +379,8 @@ const gridColsClass = computed(() => {
 onMounted(async () => {
   try {
     const config = useRuntimeConfig();
-    const res = await fetch(config.public.apiBase + '/api/products');
+    const baseUrl = config.public.apiBase.startsWith('http') ? config.public.apiBase : `https://${config.public.apiBase}`;
+    const res = await fetch(baseUrl + '/api/products');
     const json = await res.json();
     if (json.success && json.data.length > 0) {
       productsFromAPI.value = json.data;
