@@ -18,7 +18,7 @@
       <div class="lg:col-span-7 flex flex-col items-center space-y-6">
         <!-- Packaging Box Wrapper -->
         <div 
-          class="w-full max-w-125 aspect-square p-8 rounded-3xl border-4 flex flex-col justify-between shadow-2xl relative transition-all duration-500"
+          class="w-full max-w-125 min-w-0 aspect-square p-4 sm:p-8 rounded-3xl border-4 flex flex-col justify-between shadow-2xl relative transition-all duration-500"
           :class="boxColorStyle"
         >
           <!-- Box Brand Stamp -->
@@ -27,9 +27,9 @@
           </div>
 
           <!-- The Chocolate Grid Layout -->
-          <div class="grow flex items-center justify-center py-4">
+          <div class="grow flex items-center justify-center py-4 min-w-0">
             <div 
-              class="grid gap-3 bg-brand-cocoa-dark/95 p-4 rounded-xl border border-brand-gold/30 shadow-inner w-full max-w-95"
+              class="grid gap-1.5 sm:gap-3 bg-brand-cocoa-dark/95 p-2 sm:p-4 rounded-xl border border-brand-gold/30 shadow-inner w-full max-w-95"
               :class="gridColsClass"
             >
               <div 
@@ -124,10 +124,10 @@
 
         <!-- Customizer Utility Actions -->
         <div class="flex items-center space-x-4">
-          <button @click="autofillBox" class="px-5 py-2 border border-brand-gold/30 rounded-full text-xs text-brand-cocoa-dark hover:bg-brand-cream font-medium tracking-wide">
+          <button @click="autofillBox" class="px-5 py-2.5 border border-brand-gold/30 rounded-full text-xs text-brand-cocoa-dark hover:bg-brand-cream font-medium tracking-wide">
             Auto-fill Assortment
           </button>
-          <button @click="clearBox" class="px-5 py-2 border border-brand-burgundy/20 rounded-full text-xs text-brand-burgundy hover:bg-brand-burgundy/5 font-medium tracking-wide">
+          <button @click="clearBox" class="px-5 py-2.5 border border-brand-burgundy/20 rounded-full text-xs text-brand-burgundy hover:bg-brand-burgundy/5 font-medium tracking-wide">
             Clear Box
           </button>
         </div>
@@ -233,7 +233,7 @@
               <h3 class="font-serif text-lg text-brand-cocoa-dark font-bold">Select Chocolate Delicacy</h3>
               <p class="text-xs text-brand-text/50 font-sans mt-0.5">Choose a chocolate for Compartment #{{ activeSlotIndex + 1 }}</p>
             </div>
-            <button @click="activeSlotIndex = null" class="text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark p-1">
+            <button @click="activeSlotIndex = null" class="text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark p-3 -mr-2 -mt-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
