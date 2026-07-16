@@ -496,3 +496,4 @@ const formatPrice = (value) => {
   }).format(value * 0.014);
 };
 </script>
+

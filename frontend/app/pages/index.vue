@@ -565,3 +565,4 @@ const faqs = [
   { q: "How long do the filled truffles last?", a: "Our chocolate truffles are freshly prepared and best enjoyed within 3 weeks of courier arrival. Chocolate-covered organic dates last up to 2 months when kept in dry, air-conditioned environments." }
 ];
 </script>
+
