@@ -286,6 +286,8 @@
           <form @submit.prevent="handleNewsletter" class="space-y-3">
             <div class="relative">
               <input 
+                id="newsletterEmail"
+                name="newsletterEmail"
                 v-model="newsletterEmail" 
                 type="email" 
                 placeholder="Enter your email" 

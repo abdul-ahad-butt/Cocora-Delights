@@ -281,6 +281,8 @@
             </p>
             <div class="flex items-center space-x-3">
               <input 
+                id="letterEngraving"
+                name="letterEngraving"
                 v-model="activeLetter" 
                 type="text" 
                 maxlength="1" 
