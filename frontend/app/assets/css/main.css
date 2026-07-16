@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-accent: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", sans-serif;
+
+  /* Premium Luxury Brand Colors */
+  --color-brand-bg: #F8F4EE;         /* Warm Ivory */
+  --color-brand-cocoa-light: #3B2419; /* Luxury Chocolate */
+  --color-brand-cocoa-dark: #24130E;  /* Dark Cocoa */
+  --color-brand-caramel: #B57A44;     /* Caramel */
+  --color-brand-gold: #C9A66B;        /* Champagne Gold */
+  --color-brand-cream: #FFF9F2;       /* Soft Cream */
+  --color-brand-text: #2D2A28;        /* Rich Charcoal */
+  --color-brand-burgundy: #6B2C32;    /* Deep Burgundy */
+  --color-brand-success: #6F7B58;     /* Olive Green */
+}
+
+/* Custom Scrollbar and Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  background-color: #F8F4EE;
+  color: #2D2A28;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Smooth fade-ins and custom micro-animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Elegant custom button interactions */
+.btn-luxury-gold {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #C9A66B;
+  color: #C9A66B;
+  background: transparent;
+}
+
+.btn-luxury-gold:hover {
+  background: #C9A66B;
+  color: #24130E;
+  box-shadow: 0 4px 20px rgba(201, 166, 107, 0.2);
+}
+
+.btn-luxury-cocoa {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #3B2419;
+  color: #FFF9F2;
+}
+
+.btn-luxury-cocoa:hover {
+  background: #24130E;
+  box-shadow: 0 4px 20px rgba(59, 36, 25, 0.3);
+}
+
+/* Card aesthetics */
+.card-luxury {
+  border-radius: 16px;
+  background: #FFF9F2;
+  box-shadow: 0 4px 30px rgba(45, 42, 40, 0.04);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(45, 42, 40, 0.08);
+}
