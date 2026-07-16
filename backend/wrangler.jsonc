@@ -25,7 +25,7 @@
     {
       "binding": "DB",
       "database_name": "cocora-db",
-      "database_id": "db-local-id-cocora",
+      "database_id": "3be2abeb-d98a-4a8c-b6ce-f6f255cff51d",
       "migrations_dir": "drizzle"
     }
   ]
