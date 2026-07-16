@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --color-brand-cocoa-dark: #1a1818;
+  --color-brand-bg: #141212;
+  --color-brand-gold: #d4af37;
+  --color-brand-caramel: #c68e17;
+  --color-brand-cream: #f8f5f0;
+  --color-brand-burgundy: #4a0404;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
