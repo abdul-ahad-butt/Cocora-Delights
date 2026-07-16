@@ -7,7 +7,7 @@
 
     <!-- Header Navigation -->
     <header class="sticky top-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-gold/10 transition-all duration-300">
-      <div class="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
+      <div class="max-w-7xl mx-auto px-4 md:px-6 2xl:px-8 h-20 flex items-center justify-between">
         
         <!-- Logo -->
         <NuxtLink to="/" class="flex flex-col items-center group">
@@ -32,7 +32,7 @@
           <!-- Cart Button -->
           <button 
             @click="isCartOpen = true" 
-            class="relative p-2 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300"
+            class="relative p-3 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300"
             aria-label="Open Cart"
           >
             <!-- SVG Cart Icon -->
@@ -58,7 +58,7 @@
           <!-- Mobile Menu Toggle -->
           <button 
             @click="isMobileMenuOpen = !isMobileMenuOpen" 
-            class="md:hidden p-2 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300"
+            class="md:hidden p-3 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300"
             aria-label="Toggle Menu"
           >
             <svg v-if="!isMobileMenuOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -93,18 +93,18 @@
       >
         <div v-if="isMobileMenuOpen" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-brand-bg shadow-2xl z-50 md:hidden flex flex-col overflow-y-auto">
           <div class="px-4 py-6 flex justify-end">
-            <button @click="isMobileMenuOpen = false" class="p-2 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300" aria-label="Close Menu">
+            <button @click="isMobileMenuOpen = false" class="p-3 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300" aria-label="Close Menu">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <div class="px-6 py-4 flex flex-col space-y-6 mt-2">
-            <NuxtLink @click="isMobileMenuOpen = false" to="/#collections" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">COLLECTIONS</NuxtLink>
-            <NuxtLink @click="isMobileMenuOpen = false" to="/custom-box" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">CREATE YOUR BOX</NuxtLink>
-            <NuxtLink @click="isMobileMenuOpen = false" to="/#occasions" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">OCCASIONS</NuxtLink>
-            <NuxtLink @click="isMobileMenuOpen = false" to="/#corporate" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">CORPORATE GIFTS</NuxtLink>
-            <NuxtLink @click="isMobileMenuOpen = false" to="/#story" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">OUR STORY</NuxtLink>
+          <div class="px-6 py-4 flex flex-col space-y-4 mt-2">
+            <NuxtLink @click="isMobileMenuOpen = false" to="/#collections" class="block py-3 text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">COLLECTIONS</NuxtLink>
+            <NuxtLink @click="isMobileMenuOpen = false" to="/custom-box" class="block py-3 text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">CREATE YOUR BOX</NuxtLink>
+            <NuxtLink @click="isMobileMenuOpen = false" to="/#occasions" class="block py-3 text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">OCCASIONS</NuxtLink>
+            <NuxtLink @click="isMobileMenuOpen = false" to="/#corporate" class="block py-3 text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">CORPORATE GIFTS</NuxtLink>
+            <NuxtLink @click="isMobileMenuOpen = false" to="/#story" class="block py-3 text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">OUR STORY</NuxtLink>
           </div>
           <div class="mt-auto px-6 py-8">
             <NuxtLink @click="isMobileMenuOpen = false" to="/custom-box" class="block text-center w-full px-5 py-3.5 rounded-full text-xs tracking-widest font-bold btn-luxury-gold uppercase shadow-md">
@@ -149,7 +149,7 @@
               {{ cartCount }} {{ cartCount === 1 ? 'item' : 'items' }}
             </span>
           </div>
-          <button @click="isCartOpen = false" class="text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark p-1">
+          <button @click="isCartOpen = false" class="text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark p-3 -mr-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
@@ -203,16 +203,16 @@
 
                 <div class="flex items-center justify-between mt-2">
                   <!-- Quantity Selector -->
-                  <div class="flex items-center border border-brand-gold/20 rounded-full px-2 py-0.5 bg-brand-cream text-xs">
-                    <button @click="updateQty(index, -1)" class="px-1 text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark">-</button>
-                    <span class="px-2 font-medium text-brand-cocoa-dark">{{ item.quantity }}</span>
-                    <button @click="updateQty(index, 1)" class="px-1 text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark">+</button>
+                  <div class="flex items-center border border-brand-gold/20 rounded-full bg-brand-cream text-xs">
+                    <button @click="updateQty(index, -1)" class="px-3 py-2 min-h-[36px] text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark flex items-center justify-center">-</button>
+                    <span class="px-2 font-medium text-brand-cocoa-dark min-w-[20px] text-center">{{ item.quantity }}</span>
+                    <button @click="updateQty(index, 1)" class="px-3 py-2 min-h-[36px] text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark flex items-center justify-center">+</button>
                   </div>
 
                   <!-- Price & Remove -->
-                  <div class="flex items-center space-x-3">
-                    <span class="text-xs font-serif font-semibold text-brand-cocoa-dark">{{ formatPrice(item.price * item.quantity) }}</span>
-                    <button @click="removeFromCart(index)" class="text-brand-burgundy hover:text-brand-burgundy/80 p-1" aria-label="Remove item">
+                  <div class="flex items-center space-x-1">
+                    <span class="text-xs font-serif font-semibold text-brand-cocoa-dark mr-2">{{ formatPrice(item.price * item.quantity) }}</span>
+                    <button @click="removeFromCart(index)" class="text-brand-burgundy hover:text-brand-burgundy/80 p-3" aria-label="Remove item">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                       </svg>
@@ -245,7 +245,7 @@
     </transition>
 
     <!-- Footer -->
-    <footer class="bg-brand-cocoa-dark text-brand-cream border-t border-brand-gold/15 py-12 md:py-16 px-4 md:px-6 font-serif">
+    <footer class="bg-brand-cocoa-dark text-brand-cream border-t border-brand-gold/15 py-12 md:py-16 px-4 md:px-6 2xl:px-8 font-serif">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         <!-- Brand Story Column -->
         <div class="space-y-6">
