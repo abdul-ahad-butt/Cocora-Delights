@@ -311,4 +311,4 @@ const getChocoColor = (filling) => {
   if (filling === 'date') return '#612128'; 
   return '#2C160F'; 
 };
-</script>
+</script> 
