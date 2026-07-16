@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-brand-bg text-brand-text flex flex-col font-sans selection:bg-brand-gold selection:text-brand-cocoa-dark overflow-x-hidden">
     <!-- Announcement Bar -->
-    <div class="bg-brand-cocoa-dark text-brand-cream text-[9px] sm:text-xs leading-tight break-words tracking-[0.15em] py-2.5 px-4 md:px-6 text-center font-serif border-b border-brand-gold/10">
+    <div class="bg-brand-cocoa-dark text-brand-cream text-[9px] sm:text-xs leading-tight wrap-break-word tracking-[0.15em] py-2.5 px-4 md:px-6 text-center font-serif border-b border-brand-gold/10">
       COMPLIMENTARY TEMPERATURE-CONTROLLED COURIER ON ORDERS OVER 10,000 PKR / 150 AED
     </div>
 
