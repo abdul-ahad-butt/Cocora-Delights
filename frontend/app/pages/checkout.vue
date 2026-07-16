@@ -359,7 +359,8 @@ const submitOrder = async () => {
   };
 
   try {
-    const res = await fetch('http://localhost:8787/api/orders', {
+    const config = useRuntimeConfig();
+    const res = await fetch(config.public.apiBase + '/api/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

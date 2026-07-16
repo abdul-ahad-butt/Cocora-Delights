@@ -378,7 +378,8 @@ const gridColsClass = computed(() => {
 // Fetch pieces products from Hono D1 API
 onMounted(async () => {
   try {
-    const res = await fetch('http://localhost:8787/api/products');
+    const config = useRuntimeConfig();
+    const res = await fetch(config.public.apiBase + '/api/products');
     const json = await res.json();
     if (json.success && json.data.length > 0) {
       productsFromAPI.value = json.data;

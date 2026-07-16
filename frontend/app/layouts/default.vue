@@ -373,7 +373,8 @@ const handleNewsletter = async () => {
   newsletterStatus.value = 'Subscribing...';
   
   try {
-    const res = await fetch('http://localhost:8787/api/newsletter', {
+    const config = useRuntimeConfig();
+    const res = await fetch(config.public.apiBase + '/api/newsletter', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
