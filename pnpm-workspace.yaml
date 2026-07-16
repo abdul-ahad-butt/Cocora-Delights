@@ -1,7 +1,5 @@
 packages:
-  - 'frontend'
-  - 'backend'
-  - 'admin-panel'
+  - "frontend"
 
 allowBuilds:
   "@parcel/watcher": true
