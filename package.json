@@ -1,16 +1,14 @@
 {
   "name": "cocora-monorepo",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
   "scripts": {
-    "build": "npm run build --workspace=frontend",
-    "dev:backend": "npm run dev --prefix backend",
-    "dev:frontend": "npm run dev --prefix frontend",
-    "db:generate": "npm run db:generate --prefix backend",
-    "db:migrate": "npm run db:migrate --prefix backend"
+    "build:frontend": "pnpm --filter frontend run build",
+    "build:admin": "pnpm --filter admin-panel run build",
+    "dev:backend": "pnpm --filter backend run dev",
+    "dev:frontend": "pnpm --filter frontend run dev",
+    "dev:admin": "pnpm --filter admin-panel run dev",
+    "db:generate": "pnpm --filter backend run db:generate",
+    "db:migrate": "pnpm --filter backend run db:migrate"
   },
   "packageManager": "pnpm@11.13.1"
 }
