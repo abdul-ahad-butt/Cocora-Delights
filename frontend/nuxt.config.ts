@@ -15,11 +15,22 @@ export default defineNuxtConfig({
     }
   },
 
+  routeRules: {
+    '/**': {
+      headers: {
+        'Content-Security-Policy': "default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; connect-src 'self' https: wss:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:;"
+      }
+    }
+  },
+
   css: [
     '~/assets/css/main.css'
   ],
 
   vite: {
+    build: {
+      sourcemap: false
+    },
     plugins: [
       tailwindcss()
     ]
