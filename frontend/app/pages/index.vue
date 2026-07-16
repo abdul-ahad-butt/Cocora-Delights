@@ -523,11 +523,11 @@ const formatPrice = (value) => {
 
 // Static Site Redesign Data
 const featuredCategories = [
-  { name: 'Almond Chocolates', slug: 'almond-chocolates', desc: 'Slow-roasted premium almonds.', image: '/images/category_almond.png' },
-  { name: 'Pistachio Chocolates', slug: 'pistachio-chocolates', desc: 'Silky stone-ground pistachio butter.', image: '/images/category_pistachio.png' },
-  { name: 'Walnut Chocolates', slug: 'walnut-chocolates', desc: 'Double dark cocoa with buttery walnut half.', image: '/images/category_walnut.png' },
-  { name: 'Cashew Chocolates', slug: 'cashew-chocolates', desc: 'Delicate cream with salted cashew praline.', image: '/images/category_cashew.png' },
-  { name: 'Date Delicacies', slug: 'date-chocolates', desc: 'Stuffed premium dates enrobed in cocoa.', image: '/images/category_date.png' }
+  { name: 'Raspberry Ganache Heart', slug: 'raspberry-heart', desc: 'Velvety raspberry ganache in a heart shape, with rose petals.', image: '/images/dark_heart_chocolate.png' },
+  { name: 'Sea Salt Cocoa Cube', slug: 'sea-salt-cube', desc: '80% single-origin cacao cube with sea salt flakes.', image: '/images/dark_cube_chocolate.png' },
+  { name: 'Hazelnut Caramel Rectangle', slug: 'hazelnut-rectangle', desc: 'Sleek rectangle with rich hazelnut and gold caramel.', image: '/images/dark_rectangle_chocolate.png' },
+  { name: 'Gold Leaf Dark Bar', slug: 'gold-leaf-bar', desc: 'Artfully fractured dark bar shimmering with gold.', image: '/images/dark_fractured_bar.png' },
+  { name: 'Yuzu Citrus Jewel', slug: 'yuzu-jewel', desc: 'Faceted chocolate jewel, hiding a yuzu citrus center.', image: '/images/dark_yuzu_jewel.png' }
 ];
 
 const journeySteps = [
