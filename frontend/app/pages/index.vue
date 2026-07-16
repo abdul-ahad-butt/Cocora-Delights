@@ -10,14 +10,14 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pt-8 items-center min-h-[calc(100vh-8rem)] relative z-10">
+    <section class="max-w-7xl mx-auto px-6 2xl:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 pt-8 items-center min-h-[calc(100vh-8rem)] relative z-10">
       <!-- Hero Copy -->
       <div class="lg:col-span-6 space-y-8 text-left animate-fade-in">
         <span class="text-xs font-sans tracking-[0.3em] text-brand-caramel uppercase font-bold flex items-center space-x-2">
           <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
           <span>A luxury gifting experience</span>
         </span>
-        <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-brand-cocoa-dark leading-[1.05] font-bold">
+        <h1 class="font-serif text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-brand-cocoa-dark leading-[1.05] font-bold">
           Beautifully Crafted.<br />Thoughtfully Gifted.
         </h1>
         <p class="font-sans text-sm md:text-base text-brand-text/80 leading-relaxed max-w-lg">
@@ -39,6 +39,8 @@
           src="/images/luxury_dark_chocolates.png" 
           alt="Luxury Cocora Gift Box" 
           class="w-full h-full object-cover rounded-[18px] transition-all duration-1000 group-hover:scale-103"
+          fetchpriority="high"
+          decoding="sync"
         />
         <div class="absolute inset-0 bg-linear-to-t from-brand-cocoa-dark/20 via-transparent to-transparent pointer-events-none"></div>
       </div>
@@ -55,14 +57,14 @@
     </section>
 
     <!-- Featured Categories -->
-    <section class="max-w-7xl mx-auto px-4 md:px-6 space-y-10 md:space-y-12 relative z-10">
+    <section class="max-w-7xl mx-auto px-4 md:px-6 2xl:px-8 space-y-10 md:space-y-12 relative z-10">
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE FLAVORS</span>
         <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Explore Our Ingredients</h2>
         <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8">
         <div 
           v-for="cat in featuredCategories" 
           :key="cat.slug"
@@ -70,7 +72,7 @@
         >
           <!-- Hover image zoom -->
           <div class="w-full aspect-square rounded-xl overflow-hidden border border-brand-gold/10 bg-brand-bg flex items-center justify-center relative">
-            <img :src="cat.image" :alt="cat.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img :src="cat.image" :alt="cat.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
           </div>
           <div>
             <h3 class="font-serif text-base text-brand-cocoa-dark font-bold tracking-wide">{{ cat.name }}</h3>
@@ -118,7 +120,7 @@
     </section>
 
     <!-- Occasions Section with Gold Illustration SVGs -->
-    <section id="occasions" class="max-w-7xl mx-auto px-4 md:px-6 space-y-10 md:space-y-12 scroll-mt-24 relative z-10">
+    <section id="occasions" class="max-w-7xl mx-auto px-4 md:px-6 2xl:px-8 space-y-10 md:space-y-12 scroll-mt-24 relative z-10">
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE CELEBRATIONS</span>
         <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Perfect For Every Occasion</h2>
@@ -132,7 +134,7 @@
           class="group relative h-80 rounded-[20px] overflow-hidden shadow-md cursor-pointer border border-brand-gold/10"
         >
           <div class="absolute inset-0 bg-brand-cocoa-dark/50 group-hover:bg-brand-cocoa-dark/60 transition-colors duration-500 z-10"></div>
-          <img :src="occ.image" :alt="occ.name" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-103" />
+          <img :src="occ.image" :alt="occ.name" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-103" loading="lazy" decoding="async" />
           
           <div class="absolute inset-0 z-20 flex flex-col justify-between p-6">
             <!-- Occasion Gold SVG representation -->
@@ -153,7 +155,7 @@
     </section>
 
     <!-- Limited Summer Collection Segment -->
-    <section class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+    <section class="max-w-7xl mx-auto px-4 md:px-6 2xl:px-8 relative z-10">
       <div class="bg-brand-cream border border-brand-gold/20 rounded-3xl p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <!-- Text details -->
         <div class="lg:col-span-7 space-y-6 text-left">
@@ -181,20 +183,20 @@
 
         <!-- Packaging visual -->
         <div class="lg:col-span-5 relative h-72 md:h-80 w-full rounded-2xl overflow-hidden border border-brand-gold/15 shadow-xl">
-          <img src="/images/category_pistachio.png" alt="Summer Pistachio Box" class="w-full h-full object-cover" />
+          <img src="/images/category_pistachio.png" alt="Summer Pistachio Box" class="w-full h-full object-cover" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
 
     <!-- Signature Collections (Premium named collections) -->
-    <section id="collections" class="max-w-7xl mx-auto px-4 md:px-6 space-y-10 md:space-y-12 scroll-mt-24 relative z-10">
+    <section id="collections" class="max-w-7xl mx-auto px-4 md:px-6 2xl:px-8 space-y-10 md:space-y-12 scroll-mt-24 relative z-10">
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE SELECTIONS</span>
         <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Featured Signature Collections</h2>
         <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
         <div 
           v-for="item in collectionsList" 
           :key="item.id" 
@@ -202,7 +204,7 @@
         >
           <div class="space-y-4">
             <div class="h-52 w-full bg-brand-cream rounded-xl overflow-hidden border border-brand-gold/5 flex items-center justify-center relative">
-              <img :src="item.slug === 'the-royal-gifting-array' ? '/images/cocora_box_25_piece.png' : item.slug === 'celebration-no-8' ? '/images/cocora_box_16_piece.png' : item.slug === 'the-signature-box' ? '/images/cocora_box_9_piece.png' : item.imageUrl" :alt="item.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103" />
+              <img :src="item.slug === 'the-royal-gifting-array' ? '/images/cocora_box_25_piece.png' : item.slug === 'celebration-no-8' ? '/images/cocora_box_16_piece.png' : item.slug === 'the-signature-box' ? '/images/cocora_box_9_piece.png' : item.imageUrl" :alt="item.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103" loading="lazy" decoding="async" />
             </div>
             
             <div class="space-y-2">
@@ -232,7 +234,7 @@
 
     <!-- Ingredients Apple-Style Editorial Layout -->
     <section id="ingredients" class="bg-brand-cream border-y border-brand-gold/10 py-16 md:py-24 relative z-10">
-      <div class="max-w-7xl mx-auto px-4 md:px-6 space-y-16 md:space-y-24">
+      <div class="max-w-7xl mx-auto px-4 md:px-6 2xl:px-8 space-y-16 md:space-y-24">
         
         <div class="text-center space-y-3 max-w-xl mx-auto">
           <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">NO PLACE FOR PLACEHOLDERS</span>
@@ -252,14 +254,14 @@
             </p>
           </div>
           <div class="lg:col-span-7 order-1 lg:order-2 h-80 rounded-2xl overflow-hidden border border-brand-gold/10 shadow-lg">
-            <img src="/images/category_pistachio.png" alt="Premium Green Pistachios" class="w-full h-full object-cover hover:scale-[1.01] transition-transform duration-700" />
+            <img src="/images/category_pistachio.png" alt="Premium Green Pistachios" class="w-full h-full object-cover hover:scale-[1.01] transition-transform duration-700" loading="lazy" decoding="async" />
           </div>
         </div>
 
         <!-- Ingredient Row 2: Cacao -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div class="lg:col-span-7 h-80 rounded-2xl overflow-hidden border border-brand-gold/10 shadow-lg">
-            <img src="/images/category_almond.png" alt="Belgian Cocoa Bean" class="w-full h-full object-cover hover:scale-[1.01] transition-transform duration-700" />
+            <img src="/images/category_almond.png" alt="Belgian Cocoa Bean" class="w-full h-full object-cover hover:scale-[1.01] transition-transform duration-700" loading="lazy" decoding="async" />
           </div>
           <div class="lg:col-span-5 space-y-6 text-left">
             <span class="text-xs font-sans tracking-[0.2em] text-brand-gold uppercase font-semibold">BELGIAN SOURCING</span>
@@ -274,7 +276,7 @@
     </section>
 
     <!-- Packaging Showcase -->
-    <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+    <section class="max-w-7xl mx-auto px-6 2xl:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
       <div class="lg:col-span-5 space-y-6 text-left">
         <span class="text-xs font-sans tracking-[0.25em] text-brand-caramel uppercase font-semibold">THE ART OF UNWRAPPING</span>
         <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold leading-tight">
@@ -300,7 +302,7 @@
       </div>
 
       <div class="lg:col-span-7 relative h-96 w-full rounded-2xl overflow-hidden border border-brand-gold/15 shadow-xl">
-        <img src="/images/hero_gift_box.png" alt="Boutique custom wrapping and cards" class="w-full h-full object-cover" />
+        <img src="/images/hero_gift_box.png" alt="Boutique custom wrapping and cards" class="w-full h-full object-cover" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -327,7 +329,7 @@
     <section id="corporate" class="max-w-7xl mx-auto px-6 scroll-mt-24 relative z-10">
       <div class="bg-brand-cocoa-dark border border-brand-gold/20 rounded-3xl p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-brand-cream">
         <div class="lg:col-span-5 relative h-72 md:h-80 w-full rounded-2xl overflow-hidden border border-brand-gold/15 shadow-xl order-2 lg:order-1">
-          <img src="/images/hero_gift_box.png" alt="Corporate Gifting Custom Packaging" class="w-full h-full object-cover" />
+          <img src="/images/hero_gift_box.png" alt="Corporate Gifting Custom Packaging" class="w-full h-full object-cover" loading="lazy" decoding="async" />
         </div>
 
         <div class="lg:col-span-7 space-y-6 text-left order-1 lg:order-2">
