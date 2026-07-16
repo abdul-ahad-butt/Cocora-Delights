@@ -2,7 +2,7 @@
   <div class="max-w-7xl mx-auto px-6 py-12">
     
     <!-- Success State View -->
-    <div v-if="orderPlaced" class="max-w-xl mx-auto text-center space-y-8 bg-brand-cream border border-brand-gold/15 p-8 md:p-12 rounded-[24px] shadow-xl animate-fade-in">
+    <div v-if="orderPlaced" class="max-w-xl mx-auto text-center space-y-8 bg-brand-cream border border-brand-gold/15 p-8 md:p-12 rounded-3xl shadow-xl animate-fade-in">
       <div class="w-16 h-16 bg-brand-success/20 text-brand-success rounded-full flex items-center justify-center mx-auto text-3xl">✓</div>
       
       <div class="space-y-3">
@@ -11,7 +11,7 @@
         <p class="text-xs text-brand-text/50 font-sans">ORDER ID: <span class="font-bold text-brand-cocoa-dark">{{ orderResult.orderId }}</span></p>
       </div>
 
-      <div class="w-full h-[1px] bg-brand-gold/20"></div>
+      <div class="w-full h-px bg-brand-gold/20"></div>
 
       <div class="space-y-4 text-left font-sans text-xs">
         <h4 class="font-serif text-sm font-semibold text-brand-cocoa-dark uppercase tracking-wider text-center">Summary for {{ orderResult.customerName }}</h4>
@@ -46,7 +46,7 @@
       <div class="text-center space-y-3 max-w-lg mx-auto">
         <span class="text-xs font-sans tracking-[0.25em] text-brand-caramel uppercase font-semibold">SECURE CHECKOUT</span>
         <h1 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark">Finalise Your Gifting Selection</h1>
-        <div class="w-12 h-[1px] bg-brand-gold mx-auto mt-4"></div>
+        <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
       <div v-if="cart.length === 0" class="h-64 flex flex-col items-center justify-center text-center space-y-4">
@@ -195,10 +195,10 @@
               class="flex space-x-3 text-xs border-b border-brand-gold/10 pb-4 last:border-0 last:pb-0"
             >
               <!-- Small thumbnail -->
-              <div class="w-12 h-12 bg-brand-bg rounded overflow-hidden flex-shrink-0 flex items-center justify-center border border-brand-gold/5">
+              <div class="w-12 h-12 bg-brand-bg rounded overflow-hidden shrink-0 flex items-center justify-center border border-brand-gold/5">
                 <img :src="item.image" :alt="item.name" class="w-full h-full object-cover" />
               </div>
-              <div class="flex-grow">
+              <div class="grow">
                 <h4 class="font-serif text-brand-cocoa-dark font-bold line-clamp-1">{{ item.name }}</h4>
                 <p v-if="item.type === 'custom'" class="text-[9px] text-brand-caramel uppercase tracking-wider">
                   {{ item.customDetails.size }} Pieces ({{ item.customDetails.color }})

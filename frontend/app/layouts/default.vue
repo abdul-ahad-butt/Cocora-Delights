@@ -20,11 +20,11 @@
         </NuxtLink>
 
         <nav class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest text-brand-cocoa-dark/80">
-          <NuxtLink to="/#collections" class="hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300">COLLECTIONS</NuxtLink>
-          <NuxtLink to="/custom-box" class="hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300">CREATE YOUR BOX</NuxtLink>
-          <NuxtLink to="/#occasions" class="hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300">OCCASIONS</NuxtLink>
-          <NuxtLink to="/#corporate" class="hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300">CORPORATE GIFTS</NuxtLink>
-          <NuxtLink to="/#story" class="hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300">OUR STORY</NuxtLink>
+          <NuxtLink to="/#collections" class="hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300">COLLECTIONS</NuxtLink>
+          <NuxtLink to="/custom-box" class="hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300">CREATE YOUR BOX</NuxtLink>
+          <NuxtLink to="/#occasions" class="hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300">OCCASIONS</NuxtLink>
+          <NuxtLink to="/#corporate" class="hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300">CORPORATE GIFTS</NuxtLink>
+          <NuxtLink to="/#story" class="hover:text-brand-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-brand-gold hover:after:w-full after:transition-all after:duration-300">OUR STORY</NuxtLink>
         </nav>
 
         <!-- Right Side Actions -->
@@ -94,7 +94,7 @@
     </header>
 
     <!-- Main Content Area -->
-    <main class="flex-grow">
+    <main class="grow">
       <slot />
     </main>
 
@@ -135,7 +135,7 @@
         </div>
 
         <!-- Drawer Body (Items List) -->
-        <div class="flex-grow overflow-y-auto p-6 space-y-6">
+        <div class="grow overflow-y-auto p-6 space-y-6">
           <div v-if="cart.length === 0" class="h-64 flex flex-col items-center justify-center text-center space-y-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-12 h-12 text-brand-gold">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
@@ -161,12 +161,12 @@
               class="flex space-x-4 border-b border-brand-gold/10 pb-6 last:border-0 last:pb-0"
             >
               <!-- Item Image -->
-              <div class="w-20 h-20 bg-brand-cream border border-brand-gold/10 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center">
+              <div class="w-20 h-20 bg-brand-cream border border-brand-gold/10 rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
                 <img :src="item.image" :alt="item.name" class="w-full h-full object-cover" />
               </div>
 
               <!-- Item Details -->
-              <div class="flex-grow flex flex-col justify-between">
+              <div class="grow flex flex-col justify-between">
                 <div>
                   <h4 class="font-serif text-brand-cocoa-dark tracking-wide text-sm font-semibold">{{ item.name }}</h4>
                   

@@ -18,7 +18,7 @@
       <div class="lg:col-span-7 flex flex-col items-center space-y-6">
         <!-- Packaging Box Wrapper -->
         <div 
-          class="w-full max-w-[500px] aspect-square p-8 rounded-[24px] border-4 flex flex-col justify-between shadow-2xl relative transition-all duration-500"
+          class="w-full max-w-125 aspect-square p-8 rounded-3xl border-4 flex flex-col justify-between shadow-2xl relative transition-all duration-500"
           :class="boxColorStyle"
         >
           <!-- Box Brand Stamp -->
@@ -27,9 +27,9 @@
           </div>
 
           <!-- The Chocolate Grid Layout -->
-          <div class="flex-grow flex items-center justify-center py-4">
+          <div class="grow flex items-center justify-center py-4">
             <div 
-              class="grid gap-3 bg-brand-cocoa-dark/95 p-4 rounded-xl border border-brand-gold/30 shadow-inner w-full max-w-[380px]"
+              class="grid gap-3 bg-brand-cocoa-dark/95 p-4 rounded-xl border border-brand-gold/30 shadow-inner w-full max-w-95"
               :class="gridColsClass"
             >
               <div 
@@ -80,9 +80,9 @@
                       class="w-11 h-6 rounded border-b-2 border-r-2 border-black/30 flex justify-between px-1 items-center transition-transform group-hover:scale-105"
                       :style="{ backgroundColor: getChocolateColor(selectedBoxGrid[idx - 1]) }"
                     >
-                      <span class="w-[2px] h-4 bg-black/20 rounded"></span>
-                      <span class="w-[2px] h-4 bg-black/20 rounded"></span>
-                      <span class="w-[2px] h-4 bg-black/20 rounded"></span>
+                      <span class="w-0.5 h-4 bg-black/20 rounded"></span>
+                      <span class="w-0.5 h-4 bg-black/20 rounded"></span>
+                      <span class="w-0.5 h-4 bg-black/20 rounded"></span>
                     </div>
 
                     <!-- Default / Stuffed date -->
@@ -241,7 +241,7 @@
           </div>
 
           <!-- Grid of available chocolates -->
-          <div class="flex-grow overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-4 py-2 pr-2">
+          <div class="grow overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-4 py-2 pr-2">
             <div 
               v-for="item in chocolateProducts" 
               :key="item.id"
@@ -255,14 +255,14 @@
                 </svg>
                 <div v-else-if="item.shape === 'cube'" class="w-6 h-6 rounded border-b-2 border-r-2 border-black/25" :style="{ backgroundColor: getChocolateColor(item) }"></div>
                 <div v-else-if="item.shape === 'bar'" class="w-8 h-4 rounded border-b-2 border-r-2 border-black/25 flex justify-between px-0.5 items-center" :style="{ backgroundColor: getChocolateColor(item) }">
-                  <span class="w-[1px] h-2 bg-black/20"></span>
-                  <span class="w-[1px] h-2 bg-black/20"></span>
+                  <span class="w-px h-2 bg-black/20"></span>
+                  <span class="w-px h-2 bg-black/20"></span>
                 </div>
                 <div v-else class="w-8 h-5 rounded-full border-b-2 border-r-2 border-black/30" :style="{ backgroundColor: getChocolateColor(item) }"></div>
               </div>
 
               <!-- Product Details -->
-              <div class="flex-grow">
+              <div class="grow">
                 <div class="flex items-center justify-between">
                   <h4 class="font-serif text-sm text-brand-cocoa-dark font-bold group-hover:text-brand-gold transition-colors duration-300">{{ item.name }}</h4>
                   <span class="text-xs font-serif font-bold text-brand-cocoa-dark">{{ formatPrice(item.price) }}</span>

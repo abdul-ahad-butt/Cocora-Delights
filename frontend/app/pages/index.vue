@@ -34,13 +34,13 @@
       </div>
 
       <!-- Hero Cinematic Packaging Image -->
-      <div class="lg:col-span-6 relative h-[450px] md:h-[550px] w-full rounded-[24px] overflow-hidden shadow-2xl group border border-brand-gold/15 bg-brand-cream/40 flex items-center justify-center p-2">
+      <div class="lg:col-span-6 relative h-112.5 md:h-137.5 w-full rounded-3xl overflow-hidden shadow-2xl group border border-brand-gold/15 bg-brand-cream/40 flex items-center justify-center p-2">
         <img 
           src="/images/luxury_dark_chocolates.png" 
           alt="Luxury Cocora Gift Box" 
           class="w-full h-full object-cover rounded-[18px] transition-all duration-1000 group-hover:scale-103"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-brand-cocoa-dark/20 via-transparent to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-linear-to-t from-brand-cocoa-dark/20 via-transparent to-transparent pointer-events-none"></div>
       </div>
     </section>
 
@@ -48,7 +48,7 @@
     <section id="story" class="max-w-4xl mx-auto px-6 text-center space-y-8 scroll-mt-24 relative z-10">
       <span class="text-xs font-sans tracking-[0.25em] text-brand-gold uppercase font-bold">HERITAGE & BELIEF</span>
       <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark italic">"Our journey began with one simple belief: that chocolate is not merely a confection, but a bridge of affection."</h2>
-      <div class="w-16 h-[1px] bg-brand-gold mx-auto"></div>
+      <div class="w-16 h-px bg-brand-gold mx-auto"></div>
       <p class="font-sans text-xs md:text-sm text-brand-text/75 leading-relaxed max-w-2xl mx-auto">
         Every truffle we mold, every ribbon we hand-tie, and every message card we write is crafted with strict devotion. We combine imported Belgian cocoa with local treasures—emerald pistachios from the orchards and honeyed dates from the groves—to elevate your celebrations into enduring memories.
       </p>
@@ -59,7 +59,7 @@
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE FLAVORS</span>
         <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Explore Our Ingredients</h2>
-        <div class="w-12 h-[1px] bg-brand-gold mx-auto mt-4"></div>
+        <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -122,7 +122,7 @@
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE CELEBRATIONS</span>
         <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Perfect For Every Occasion</h2>
-        <div class="w-12 h-[1px] bg-brand-gold mx-auto mt-4"></div>
+        <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -154,7 +154,7 @@
 
     <!-- Limited Summer Collection Segment -->
     <section class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="bg-brand-cream border border-brand-gold/20 rounded-[24px] p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="bg-brand-cream border border-brand-gold/20 rounded-3xl p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <!-- Text details -->
         <div class="lg:col-span-7 space-y-6 text-left">
           <span class="px-3 py-1 bg-brand-burgundy text-brand-cream text-[10px] font-bold rounded-full tracking-widest uppercase inline-block">LIMITED EDITION</span>
@@ -191,7 +191,7 @@
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE SELECTIONS</span>
         <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Featured Signature Collections</h2>
-        <div class="w-12 h-[1px] bg-brand-gold mx-auto mt-4"></div>
+        <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -310,7 +310,7 @@
         <div class="text-center space-y-3">
           <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE TIMELINE</span>
           <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Our Craftsmanship Process</h2>
-          <div class="w-12 h-[1px] bg-brand-gold mx-auto mt-4"></div>
+          <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -325,7 +325,7 @@
 
     <!-- Dedicated Corporate Gifting Segment -->
     <section id="corporate" class="max-w-7xl mx-auto px-6 scroll-mt-24 relative z-10">
-      <div class="bg-brand-cocoa-dark border border-brand-gold/20 rounded-[24px] p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-brand-cream">
+      <div class="bg-brand-cocoa-dark border border-brand-gold/20 rounded-3xl p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-brand-cream">
         <div class="lg:col-span-5 relative h-72 md:h-80 w-full rounded-2xl overflow-hidden border border-brand-gold/15 shadow-xl order-2 lg:order-1">
           <img src="/images/hero_gift_box.png" alt="Corporate Gifting Custom Packaging" class="w-full h-full object-cover" />
         </div>
@@ -360,7 +360,7 @@
         <div class="text-center space-y-3">
           <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">CLIENT HEARTS</span>
           <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Endorsements</h2>
-          <div class="w-12 h-[1px] bg-brand-gold mx-auto mt-4"></div>
+          <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -385,7 +385,7 @@
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">FREQUENT INQUIRIES</span>
         <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Frequently Asked Questions</h2>
-        <div class="w-12 h-[1px] bg-brand-gold mx-auto mt-4"></div>
+        <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
       <div class="space-y-4">
