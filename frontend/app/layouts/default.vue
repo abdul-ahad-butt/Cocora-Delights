@@ -204,9 +204,9 @@
                 <div class="flex items-center justify-between mt-2">
                   <!-- Quantity Selector -->
                   <div class="flex items-center border border-brand-gold/20 rounded-full bg-brand-cream text-xs">
-                    <button @click="updateQty(index, -1)" class="px-3 py-2 min-h-[36px] text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark flex items-center justify-center">-</button>
-                    <span class="px-2 font-medium text-brand-cocoa-dark min-w-[20px] text-center">{{ item.quantity }}</span>
-                    <button @click="updateQty(index, 1)" class="px-3 py-2 min-h-[36px] text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark flex items-center justify-center">+</button>
+                    <button @click="updateQty(index, -1)" class="px-3 py-2 min-h-9 text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark flex items-center justify-center">-</button>
+                    <span class="px-2 font-medium text-brand-cocoa-dark min-w-5 text-center">{{ item.quantity }}</span>
+                    <button @click="updateQty(index, 1)" class="px-3 py-2 min-h-9 text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark flex items-center justify-center">+</button>
                   </div>
 
                   <!-- Price & Remove -->

@@ -181,7 +181,7 @@ app.get('/api/admin/orders', async (c) => {
     const jwtSecret = c.env.JWT_SECRET || 'fallback_secret';
     
     try {
-      await verify(token, jwtSecret);
+      await verify(token, jwtSecret, "HS256");
     } catch (e) {
       return c.json({ success: false, error: 'Invalid or expired token' }, 401);
     }

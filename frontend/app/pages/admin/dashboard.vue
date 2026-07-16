@@ -20,7 +20,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full space-y-8">
+    <main class="grow max-w-7xl mx-auto px-6 py-12 w-full space-y-8">
       
       <div class="flex justify-between items-end border-b border-brand-gold/10 pb-4">
         <div>
