@@ -47,7 +47,7 @@
     <!-- Brand Story / Heritage Segment -->
     <section id="story" class="max-w-4xl mx-auto px-6 text-center space-y-8 scroll-mt-24 relative z-10">
       <span class="text-xs font-sans tracking-[0.25em] text-brand-gold uppercase font-bold">HERITAGE & BELIEF</span>
-      <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark italic">"Our journey began with one simple belief: that chocolate is not merely a confection, but a bridge of affection."</h2>
+      <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark italic">"Our journey began with one simple belief: that chocolate is not merely a confection, but a bridge of affection."</h2>
       <div class="w-16 h-px bg-brand-gold mx-auto"></div>
       <p class="font-sans text-xs md:text-sm text-brand-text/75 leading-relaxed max-w-2xl mx-auto">
         Every truffle we mold, every ribbon we hand-tie, and every message card we write is crafted with strict devotion. We combine imported Belgian cocoa with local treasures—emerald pistachios from the orchards and honeyed dates from the groves—to elevate your celebrations into enduring memories.
@@ -55,14 +55,14 @@
     </section>
 
     <!-- Featured Categories -->
-    <section class="max-w-7xl mx-auto px-6 space-y-12 relative z-10">
+    <section class="max-w-7xl mx-auto px-4 md:px-6 space-y-10 md:space-y-12 relative z-10">
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE FLAVORS</span>
-        <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Explore Our Ingredients</h2>
+        <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Explore Our Ingredients</h2>
         <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8">
         <div 
           v-for="cat in featuredCategories" 
           :key="cat.slug"
@@ -84,18 +84,18 @@
     </section>
 
     <!-- Personalization Step-by-Step Gifting Journey -->
-    <section class="bg-brand-cocoa-dark text-brand-cream border-y border-brand-gold/25 py-24 px-6 relative z-10">
+    <section class="bg-brand-cocoa-dark text-brand-cream border-y border-brand-gold/25 py-16 md:py-24 px-4 md:px-6 relative z-10">
       <div class="max-w-7xl mx-auto space-y-16">
         <div class="text-center space-y-4 max-w-xl mx-auto">
           <span class="text-xs font-sans tracking-[0.25em] text-brand-gold uppercase font-bold">THE CREATIVE JOURNEY</span>
-          <h2 class="font-serif text-3xl md:text-4xl text-brand-cream font-bold">How to Create Your Memorable Gift</h2>
+          <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cream font-bold">How to Create Your Memorable Gift</h2>
           <p class="font-sans text-xs text-brand-cream/70 leading-relaxed">
             We don't just package chocolates. We invite you to express your love, congratulations, or gratitude through a personalized curation process.
           </p>
         </div>
 
         <!-- The Journey Roadmap -->
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8 relative">
           <div v-for="(step, idx) in journeySteps" :key="idx" class="flex flex-col items-center text-center space-y-4 relative">
             <!-- Step index circle -->
             <div class="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center bg-brand-cocoa-light text-brand-gold font-serif font-bold text-sm shadow-md">
@@ -118,14 +118,14 @@
     </section>
 
     <!-- Occasions Section with Gold Illustration SVGs -->
-    <section id="occasions" class="max-w-7xl mx-auto px-6 space-y-12 scroll-mt-24 relative z-10">
+    <section id="occasions" class="max-w-7xl mx-auto px-4 md:px-6 space-y-10 md:space-y-12 scroll-mt-24 relative z-10">
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE CELEBRATIONS</span>
-        <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Perfect For Every Occasion</h2>
+        <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Perfect For Every Occasion</h2>
         <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         <div 
           v-for="occ in occasionsList" 
           :key="occ.name" 
@@ -153,12 +153,12 @@
     </section>
 
     <!-- Limited Summer Collection Segment -->
-    <section class="max-w-7xl mx-auto px-6 relative z-10">
+    <section class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
       <div class="bg-brand-cream border border-brand-gold/20 rounded-3xl p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <!-- Text details -->
         <div class="lg:col-span-7 space-y-6 text-left">
           <span class="px-3 py-1 bg-brand-burgundy text-brand-cream text-[10px] font-bold rounded-full tracking-widest uppercase inline-block">LIMITED EDITION</span>
-          <h2 class="font-serif text-3xl md:text-5xl text-brand-cocoa-dark leading-tight font-bold">
+          <h2 class="font-serif text-2xl md:text-4xl lg:text-5xl text-brand-cocoa-dark leading-tight font-bold">
             The Summer Pistachio Collection
           </h2>
           <p class="font-sans text-xs md:text-sm text-brand-text/75 leading-relaxed">
@@ -187,14 +187,14 @@
     </section>
 
     <!-- Signature Collections (Premium named collections) -->
-    <section id="collections" class="max-w-7xl mx-auto px-6 space-y-12 scroll-mt-24 relative z-10">
+    <section id="collections" class="max-w-7xl mx-auto px-4 md:px-6 space-y-10 md:space-y-12 scroll-mt-24 relative z-10">
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE SELECTIONS</span>
-        <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Featured Signature Collections</h2>
+        <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Featured Signature Collections</h2>
         <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
         <div 
           v-for="item in collectionsList" 
           :key="item.id" 
@@ -231,12 +231,12 @@
     </section>
 
     <!-- Ingredients Apple-Style Editorial Layout -->
-    <section id="ingredients" class="bg-brand-cream border-y border-brand-gold/10 py-24 relative z-10">
-      <div class="max-w-7xl mx-auto px-6 space-y-24">
+    <section id="ingredients" class="bg-brand-cream border-y border-brand-gold/10 py-16 md:py-24 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 md:px-6 space-y-16 md:space-y-24">
         
         <div class="text-center space-y-3 max-w-xl mx-auto">
           <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">NO PLACE FOR PLACEHOLDERS</span>
-          <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Uncompromising Quality</h2>
+          <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Uncompromising Quality</h2>
           <p class="font-sans text-xs text-brand-text/60 leading-relaxed">
             Every element of a Cocora chocolate is selected for its sensory richness. We believe in visual beauty and clean, organic craftsmanship.
           </p>

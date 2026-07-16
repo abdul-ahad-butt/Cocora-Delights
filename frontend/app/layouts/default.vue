@@ -1,13 +1,13 @@
 <template>
-  <div class="min-h-screen bg-brand-bg text-brand-text flex flex-col font-sans selection:bg-brand-gold selection:text-brand-cocoa-dark">
+  <div class="min-h-screen bg-brand-bg text-brand-text flex flex-col font-sans selection:bg-brand-gold selection:text-brand-cocoa-dark overflow-x-hidden">
     <!-- Announcement Bar -->
-    <div class="bg-brand-cocoa-dark text-brand-cream text-xs tracking-[0.15em] py-2.5 px-4 text-center font-serif border-b border-brand-gold/10">
+    <div class="bg-brand-cocoa-dark text-brand-cream text-[9px] sm:text-xs leading-tight break-words tracking-[0.15em] py-2.5 px-4 md:px-6 text-center font-serif border-b border-brand-gold/10">
       COMPLIMENTARY TEMPERATURE-CONTROLLED COURIER ON ORDERS OVER 10,000 PKR / 150 AED
     </div>
 
     <!-- Header Navigation -->
     <header class="sticky top-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-gold/10 transition-all duration-300">
-      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         
         <!-- Logo -->
         <NuxtLink to="/" class="flex flex-col items-center group">
@@ -71,24 +71,46 @@
         </div>
       </div>
 
-      <!-- Mobile Dropdown Navigation -->
+      <!-- Mobile Side Drawer Navigation -->
       <transition 
-        enter-active-class="transition duration-200 ease-out"
-        enter-from-class="opacity-0 translate-y-[-10px]"
-        enter-to-class="opacity-100 translate-y-0"
-        leave-active-class="transition duration-150 ease-in"
-        leave-from-class="opacity-100 translate-y-0"
-        leave-to-class="opacity-0 translate-y-[-10px]"
+        enter-active-class="transition duration-300 ease-out"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-active-class="transition duration-200 ease-in"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
       >
-        <div v-if="isMobileMenuOpen" class="md:hidden bg-brand-bg border-b border-brand-gold/10 px-6 py-6 space-y-4 shadow-lg">
-          <NuxtLink @click="isMobileMenuOpen = false" to="/#collections" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">COLLECTIONS</NuxtLink>
-          <NuxtLink @click="isMobileMenuOpen = false" to="/custom-box" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">CREATE YOUR BOX</NuxtLink>
-          <NuxtLink @click="isMobileMenuOpen = false" to="/#occasions" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">OCCASIONS</NuxtLink>
-          <NuxtLink @click="isMobileMenuOpen = false" to="/#corporate" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">CORPORATE GIFTS</NuxtLink>
-          <NuxtLink @click="isMobileMenuOpen = false" to="/#story" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">OUR STORY</NuxtLink>
-          <NuxtLink @click="isMobileMenuOpen = false" to="/custom-box" class="block text-center w-full px-5 py-3 rounded-full text-xs tracking-widest font-medium btn-luxury-gold uppercase">
-            Create Your Box
-          </NuxtLink>
+        <div v-if="isMobileMenuOpen" class="fixed inset-0 bg-brand-cocoa-dark/60 backdrop-blur-sm z-50 md:hidden" @click="isMobileMenuOpen = false"></div>
+      </transition>
+
+      <transition 
+        enter-active-class="transition duration-300 ease-out transform"
+        enter-from-class="translate-x-full"
+        enter-to-class="translate-x-0"
+        leave-active-class="transition duration-200 ease-in transform"
+        leave-from-class="translate-x-0"
+        leave-to-class="translate-x-full"
+      >
+        <div v-if="isMobileMenuOpen" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-brand-bg shadow-2xl z-50 md:hidden flex flex-col overflow-y-auto">
+          <div class="px-4 py-6 flex justify-end">
+            <button @click="isMobileMenuOpen = false" class="p-2 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300" aria-label="Close Menu">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="px-6 py-4 flex flex-col space-y-6 mt-2">
+            <NuxtLink @click="isMobileMenuOpen = false" to="/#collections" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">COLLECTIONS</NuxtLink>
+            <NuxtLink @click="isMobileMenuOpen = false" to="/custom-box" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">CREATE YOUR BOX</NuxtLink>
+            <NuxtLink @click="isMobileMenuOpen = false" to="/#occasions" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">OCCASIONS</NuxtLink>
+            <NuxtLink @click="isMobileMenuOpen = false" to="/#corporate" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">CORPORATE GIFTS</NuxtLink>
+            <NuxtLink @click="isMobileMenuOpen = false" to="/#story" class="block text-sm tracking-widest text-brand-cocoa-dark hover:text-brand-gold font-medium">OUR STORY</NuxtLink>
+          </div>
+          <div class="mt-auto px-6 py-8">
+            <NuxtLink @click="isMobileMenuOpen = false" to="/custom-box" class="block text-center w-full px-5 py-3.5 rounded-full text-xs tracking-widest font-bold btn-luxury-gold uppercase shadow-md">
+              Create Your Box
+            </NuxtLink>
+          </div>
         </div>
       </transition>
     </header>
@@ -223,7 +245,7 @@
     </transition>
 
     <!-- Footer -->
-    <footer class="bg-brand-cocoa-dark text-brand-cream border-t border-brand-gold/15 py-16 px-6 font-serif">
+    <footer class="bg-brand-cocoa-dark text-brand-cream border-t border-brand-gold/15 py-12 md:py-16 px-4 md:px-6 font-serif">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         <!-- Brand Story Column -->
         <div class="space-y-6">
@@ -309,7 +331,7 @@
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto border-t border-brand-gold/10 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between text-[10px] text-brand-cream/40 font-sans tracking-wider">
+      <div class="max-w-7xl mx-auto border-t border-brand-gold/10 mt-12 md:mt-16 pt-8 flex flex-col md:flex-row items-center justify-between text-[10px] text-brand-cream/40 font-sans tracking-wider text-center md:text-left">
         <p>&copy; 2026 COCORA DELIGHTS. ALL RIGHTS RESERVED.</p>
         <div class="flex space-x-6 mt-4 md:mt-0">
           <a href="#" class="hover:text-brand-gold">PRIVACY POLICY</a>
