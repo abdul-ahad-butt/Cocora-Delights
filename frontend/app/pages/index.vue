@@ -202,7 +202,7 @@
         >
           <div class="space-y-4">
             <div class="h-52 w-full bg-brand-cream rounded-xl overflow-hidden border border-brand-gold/5 flex items-center justify-center relative">
-              <img :src="item.imageUrl" :alt="item.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103" />
+              <img :src="item.slug === 'the-royal-gifting-array' ? '/images/cocora_box_25_piece.png' : item.slug === 'celebration-no-8' ? '/images/cocora_box_16_piece.png' : item.imageUrl" :alt="item.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103" />
             </div>
             
             <div class="space-y-2">
