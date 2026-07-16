@@ -17,7 +17,7 @@ app.use('/api/*', cors({
   allowMethods: ['GET', 'POST', 'OPTIONS'],
   exposeHeaders: ['Content-Length'],
   maxAge: 600,
-  credentials: true,
+  // credentials: true, // Removed because wildcard origin ('*') cannot be used with credentials
 }));
 
 // Test root endpoint
