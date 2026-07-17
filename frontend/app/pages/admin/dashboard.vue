@@ -86,9 +86,7 @@ const fetchOrders = async () => {
   loading.value = true
   try {
     const token = useCookie('admin_token').value
-    
-    // Fallback if public.apiBase is empty/missing
-    const baseUrl = config.public.apiBase || 'http://localhost:8787'
+    const baseUrl = useApiBase();
     
     const res = await $fetch(`${baseUrl}/api/admin/orders`, {
       headers: {

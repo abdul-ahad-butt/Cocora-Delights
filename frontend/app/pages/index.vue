@@ -447,8 +447,7 @@ const signatureCollectionsFromAPI = ref([]);
 // Fetch signature collections from D1 backend
 onMounted(async () => {
   try {
-    const config = useRuntimeConfig();
-    const baseUrl = config.public.apiBase.startsWith('http') ? config.public.apiBase : `https://${config.public.apiBase}`;
+    const baseUrl = useApiBase();
     const res = await fetch(baseUrl + '/api/signature-collections');
     const json = await res.json();
     if (json.success && json.data.length > 0) {

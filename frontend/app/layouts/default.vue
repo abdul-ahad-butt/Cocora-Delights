@@ -397,8 +397,7 @@ const handleNewsletter = async () => {
   newsletterStatus.value = 'Subscribing...';
   
   try {
-    const config = useRuntimeConfig();
-    const baseUrl = config.public.apiBase.startsWith('http') ? config.public.apiBase : `https://${config.public.apiBase}`;
+    const baseUrl = useApiBase();
     const res = await fetch(baseUrl + '/api/newsletter', {
       method: 'POST',
       headers: {
