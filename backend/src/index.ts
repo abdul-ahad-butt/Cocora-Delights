@@ -14,19 +14,23 @@ type Bindings = {
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-// Enable CORS for all routes (important for frontend communication)
-app.use('/api/*', cors({
-  origin: '*', // In production, restrict to frontend domain
-  allowHeaders: ['Content-Type', 'Authorization'],
-  allowMethods: ['GET', 'POST', 'OPTIONS'],
+// Enable CORS globally for all routes — covers both storefront & admin panel domains
+app.use('*', cors({
+  origin: '*',
+  allowHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   exposeHeaders: ['Content-Length'],
-  maxAge: 600,
-  // credentials: true, // Removed because wildcard origin ('*') cannot be used with credentials
+  maxAge: 86400,
 }));
 
 // Test root endpoint
 app.get('/', (c) => {
   return c.json({ message: 'Welcome to Cocora Chocolate Boutique API' });
+});
+
+// Silence favicon.ico 404 errors in browser
+app.get('/favicon.ico', (c) => {
+  return c.body(null, 204);
 });
 
 // GET all categories

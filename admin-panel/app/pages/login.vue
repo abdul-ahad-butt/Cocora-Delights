@@ -83,13 +83,13 @@ const username = ref('')
 const password = ref('')
 const loading = ref(false)
 const error = ref('')
+const config = useRuntimeConfig()
 
 const handleLogin = async () => {
   loading.value = true
   error.value = ''
 
   try {
-    const config = useRuntimeConfig()
     // Append /api/admin/login to API base
     const res = await $fetch(`${config.public.apiBase}/api/admin/login`, {
       method: 'POST',

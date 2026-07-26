@@ -176,11 +176,11 @@ const loading = ref(false)
 const selectedOrder = ref(null)
 const parsedCustomBoxDetails = ref(null)
 const isModalOpen = ref(false)
+const config = useRuntimeConfig()
 
 const fetchOrders = async () => {
   loading.value = true
   try {
-    const config = useRuntimeConfig()
     const token = useCookie('admin_token').value
 
     const res = await $fetch(`${config.public.apiBase}/api/admin/orders`, {

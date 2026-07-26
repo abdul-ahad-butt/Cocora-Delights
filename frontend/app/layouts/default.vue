@@ -354,6 +354,9 @@ const isMobileMenuOpen = useState('cocora-mobile-menu', () => false);
 const newsletterEmail = ref('');
 const newsletterStatus = ref('');
 
+// Initialize API Base URL at setup to avoid Nuxt context loss in event handlers
+const baseUrl = useApiBase();
+
 // Computed helper variables
 const cartCount = computed(() => {
   return cart.value.reduce((total, item) => total + item.quantity, 0);
@@ -397,7 +400,6 @@ const handleNewsletter = async () => {
   newsletterStatus.value = 'Subscribing...';
   
   try {
-    const baseUrl = useApiBase();
     const res = await fetch(baseUrl + '/api/newsletter', {
       method: 'POST',
       headers: {

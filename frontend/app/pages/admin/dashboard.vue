@@ -81,13 +81,12 @@ import { ref, onMounted } from 'vue'
 const config = useRuntimeConfig()
 const orders = ref([])
 const loading = ref(true)
+const baseUrl = useApiBase();
 
 const fetchOrders = async () => {
   loading.value = true
   try {
     const token = useCookie('admin_token').value
-    const baseUrl = useApiBase();
-    
     const res = await $fetch(`${baseUrl}/api/admin/orders`, {
       headers: {
         'Authorization': `Bearer ${token}`

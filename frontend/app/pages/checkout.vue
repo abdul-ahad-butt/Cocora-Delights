@@ -157,15 +157,15 @@
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
                   <div class="sm:col-span-4 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardNumber">Card Number</label>
-                    <input required id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" />
+                    <input required id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" v-model="shippingForm.cardNumber" @input="formatCardNumber" maxlength="23" />
                   </div>
                   <div class="sm:col-span-2 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardExpiry">Expiration Date</label>
-                    <input required id="cardExpiry" type="text" placeholder="MM/YY" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" />
+                    <input required id="cardExpiry" type="text" placeholder="MM/YY" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" v-model="shippingForm.cardExpiry" @input="formatExpiry" maxlength="5" />
                   </div>
                   <div class="sm:col-span-2 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardCvv">Security Code (CVV)</label>
-                    <input required id="cardCvv" type="password" placeholder="•••" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" />
+                    <input required id="cardCvv" type="password" placeholder="•••" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" v-model="shippingForm.cardCvv" @input="formatCvv" maxlength="4" />
                   </div>
                 </div>
               </div>
@@ -248,6 +248,9 @@ useHead({
 const cart = useState('cocora-cart');
 const isCartOpen = useState('cocora-cart-open');
 
+// Initialize API Base URL at setup to avoid Nuxt context loss in event handlers
+const baseUrl = useApiBase();
+
 // Local States
 const orderPlaced = ref(false);
 const submitting = ref(false);
@@ -263,6 +266,9 @@ const shippingForm = ref({
   shippingCity: 'Karachi',
   shippingCountry: 'Pakistan',
   paymentMethod: 'whatsapp', // Default WhatsApp order option
+  cardNumber: '',
+  cardExpiry: '',
+  cardCvv: '',
 });
 
 // Computed items pricing
@@ -301,6 +307,45 @@ const getPaymentMethodName = (method) => {
   if (method === 'whatsapp') return 'WhatsApp Boutique Concierge Confirmation';
   if (method === 'card') return 'Simulated Credit Card Authorization';
   return 'Cash on Delivery';
+};
+
+// Formatting helpers for Card inputs
+const formatCardNumber = () => {
+  if (!shippingForm.value.cardNumber) return;
+  let val = shippingForm.value.cardNumber.replace(/\D/g, '');
+  val = val.substring(0, 19);
+  let parts = [];
+  for (let i = 0; i < val.length; i += 4) {
+    parts.push(val.substring(i, i + 4));
+  }
+  shippingForm.value.cardNumber = parts.join(' ');
+};
+
+const formatExpiry = () => {
+  if (!shippingForm.value.cardExpiry) return;
+  let val = shippingForm.value.cardExpiry.replace(/\D/g, '');
+  if (val.length > 0) {
+    if (val.length === 1 && parseInt(val) > 1) {
+      val = '0' + val;
+    }
+  }
+  if (val.length >= 2) {
+    let month = parseInt(val.substring(0, 2));
+    if (month > 12) {
+      val = '12' + val.substring(2);
+    } else if (month === 0) {
+      val = '01' + val.substring(2);
+    }
+  }
+  if (val.length > 2) {
+    val = val.substring(0, 2) + '/' + val.substring(2, 4);
+  }
+  shippingForm.value.cardExpiry = val;
+};
+
+const formatCvv = () => {
+  if (!shippingForm.value.cardCvv) return;
+  shippingForm.value.cardCvv = shippingForm.value.cardCvv.replace(/\D/g, '').substring(0, 4);
 };
 
 // Pricing formatting
@@ -359,7 +404,6 @@ const submitOrder = async () => {
   };
 
   try {
-    const baseUrl = useApiBase();
     const res = await fetch(baseUrl + '/api/orders', {
       method: 'POST',
       headers: {
