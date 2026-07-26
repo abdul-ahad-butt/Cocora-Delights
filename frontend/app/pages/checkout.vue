@@ -359,39 +359,52 @@ const getPaymentMethodName = (method) => {
 
 // Formatting helpers for Card inputs
 const formatCardNumber = (e) => {
-  if (!e.target.value) return;
-  let val = e.target.value.replace(/\D/g, '');
-  val = val.substring(0, 16);
-  let parts = [];
-  for (let i = 0; i < val.length; i += 4) {
-    parts.push(val.substring(i, i + 4));
+  const raw = e.target.value.replace(/\D/g, '');
+  const formatted = raw.match(/.{1,4}/g)?.join(' ') || raw;
+  shippingForm.value.cardNumber = formatted.slice(0, 19);
+  
+  if (raw.length < 15 && raw.length > 0) {
+    errors.value.cardNumber = "Invalid Card Number";
+  } else {
+    errors.value.cardNumber = "";
   }
-  shippingForm.value.cardNumber = parts.join(' ');
 };
 
 const formatExpiry = (e) => {
-  if (!e.target.value) return;
-  let val = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+  let raw = e.target.value.replace(/\D/g, '');
   
-  // Enforce month bounds (01-12)
-  if (val.length >= 2) {
-    let month = parseInt(val.substring(0, 2), 10);
-    if (month > 12) val = '12' + val.substring(2);
-    if (month === 0) val = '01' + val.substring(2);
-    val = val.substring(0, 2) + '/' + val.substring(2, 4);
+  if (raw.length >= 2) {
+    let month = parseInt(raw.substring(0, 2), 10);
+    if (month > 12) raw = '12' + raw.substring(2);
+    if (month === 0) raw = '01' + raw.substring(2);
+    raw = raw.substring(0, 2) + '/' + raw.substring(2, 4);
   }
   
-  shippingForm.value.cardExpiry = val.slice(0, 5); // Cap at 5 chars (MM/YY)
-  
-  // Clear error while typing if valid format
-  if (val.length === 5) {
-    errors.value.expirationDate = '';
+  const formatted = raw.slice(0, 5);
+  shippingForm.value.cardExpiry = formatted;
+
+  if (formatted.length === 5) {
+    const expRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+    if (!expRegex.test(formatted)) {
+      errors.value.expirationDate = "Invalid Date (MM/YY)";
+    } else {
+      errors.value.expirationDate = "";
+    }
+  } else if (formatted.length > 0) {
+    errors.value.expirationDate = "Format must be MM/YY";
+  } else {
+    errors.value.expirationDate = "";
   }
 };
 
 const formatCvv = (e) => {
-  if (!e.target.value) return;
-  shippingForm.value.cardCvv = e.target.value.replace(/\D/g, '').substring(0, 4);
+  const raw = e.target.value.replace(/\D/g, '').slice(0, 4);
+  shippingForm.value.cardCvv = raw;
+  if (raw.length < 3 && raw.length > 0) {
+    errors.value.cvv = "Invalid CVV";
+  } else {
+    errors.value.cvv = "";
+  }
 };
 
 // Pricing formatting

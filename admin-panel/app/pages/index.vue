@@ -206,8 +206,8 @@ const openProofModal = (base64) => {
   isProofModalOpen.value = true
 }
 
-const fetchOrders = async () => {
-  loading.value = true
+const fetchOrders = async (silent = false) => {
+  if (!silent) loading.value = true
   try {
     const token = useCookie('admin_token').value
 
@@ -228,12 +228,18 @@ const fetchOrders = async () => {
       navigateTo('/login')
     }
   } finally {
-    loading.value = false
+    if (!silent) loading.value = false
   }
 }
 
+let pollInterval;
 onMounted(() => {
   fetchOrders()
+  pollInterval = setInterval(() => fetchOrders(true), 5000)
+})
+
+onUnmounted(() => {
+  if (pollInterval) clearInterval(pollInterval)
 })
 
 const openOrderDetails = (order) => {
