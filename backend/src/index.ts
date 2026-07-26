@@ -105,6 +105,7 @@ app.post('/api/orders', async (c) => {
       quantity,
       totalPrice,
       paymentMethod,
+      paymentProof,
       orderStatus
     } = body;
 
@@ -113,8 +114,8 @@ app.post('/api/orders', async (c) => {
         id, customer_name, customer_email, customer_phone,
         shipping_address, shipping_city, shipping_country,
         order_type, custom_box_details, signature_collection_id,
-        quantity, total_price, payment_method, order_status, created_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        quantity, total_price, payment_method, payment_proof, order_status, created_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const finalOrderId = orderId || 'COC-' + Math.random().toString(36).substring(2, 9).toUpperCase();
@@ -133,6 +134,7 @@ app.post('/api/orders', async (c) => {
       quantity || 1,
       totalPrice,
       paymentMethod,
+      paymentProof || null,
       orderStatus || 'pending',
       new Date().toISOString()
     ).run();

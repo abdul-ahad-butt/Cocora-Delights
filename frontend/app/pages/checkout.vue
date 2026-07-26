@@ -134,12 +134,12 @@
 
               <button 
                 type="button" 
-                @click="shippingForm.paymentMethod = 'cod'"
+                @click="shippingForm.paymentMethod = 'online_pakistan'"
                 class="p-4 min-h-[44px] rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
-                :class="shippingForm.paymentMethod === 'cod' ? 'border-brand-gold bg-brand-bg font-semibold' : 'border-brand-gold/20 hover:border-brand-gold'"
+                :class="shippingForm.paymentMethod === 'online_pakistan' ? 'border-brand-gold bg-brand-bg font-semibold' : 'border-brand-gold/20 hover:border-brand-gold'"
               >
-                <span class="w-6 h-6 rounded-full bg-brand-caramel/20 text-brand-caramel flex items-center justify-center text-xs font-bold font-sans">💵</span>
-                <span class="text-[10px] tracking-wider uppercase text-brand-cocoa-dark font-medium leading-none">Cash on Delivery</span>
+                <span class="w-6 h-6 rounded-full bg-brand-caramel/20 text-brand-caramel flex items-center justify-center text-xs font-bold font-sans">💳</span>
+                <span class="text-[10px] tracking-wider uppercase text-brand-cocoa-dark font-medium leading-none">Online Pakistan Payment</span>
               </button>
             </div>
 
@@ -158,18 +158,43 @@
                   <div class="sm:col-span-4 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardNumber">Card Number</label>
                     <input required id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" class="w-full rounded-md p-3 text-xs focus:outline-none border text-brand-cocoa-dark" :class="errors.cardNumber ? 'border-red-500 bg-red-50' : 'border-brand-gold/20 bg-brand-cream'" v-model="shippingForm.cardNumber" @input="formatCardNumber" @blur="validateCard" maxlength="19" />
-                    <span v-if="errors.cardNumber" class="text-red-500 text-xs font-semibold mt-1 block">{{ errors.cardNumber }}</span>
+                    <span v-if="errors.cardNumber" class="text-red-500 text-xs font-bold mt-1 block">Invalid Card Number</span>
                   </div>
                   <div class="sm:col-span-2 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardExpiry">Expiration Date</label>
                     <input required id="cardExpiry" type="text" placeholder="MM/YY" class="w-full rounded-md p-3 text-xs focus:outline-none border text-brand-cocoa-dark" :class="errors.expirationDate ? 'border-red-500 bg-red-50' : 'border-brand-gold/20 bg-brand-cream'" v-model="shippingForm.cardExpiry" @input="formatExpiry" @blur="validateCard" maxlength="5" />
-                    <span v-if="errors.expirationDate" class="text-red-500 text-xs font-semibold mt-1 block">{{ errors.expirationDate }}</span>
+                    <span v-if="errors.expirationDate" class="text-red-500 text-xs font-bold mt-1 block">Invalid Month / Format (MM/YY)</span>
                   </div>
                   <div class="sm:col-span-2 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardCvv">Security Code (CVV)</label>
                     <input required id="cardCvv" type="password" placeholder="•••" class="w-full rounded-md p-3 text-xs focus:outline-none border text-brand-cocoa-dark" :class="errors.cvv ? 'border-red-500 bg-red-50' : 'border-brand-gold/20 bg-brand-cream'" v-model="shippingForm.cardCvv" @input="formatCvv" @blur="validateCard" maxlength="4" />
-                    <span v-if="errors.cvv" class="text-red-500 text-xs font-semibold mt-1 block">{{ errors.cvv }}</span>
+                    <span v-if="errors.cvv" class="text-red-500 text-xs font-bold mt-1 block">Invalid CVV</span>
                   </div>
+                </div>
+              </div>
+            </transition>
+
+            <!-- Pakistan Payment Details Box -->
+            <transition
+              enter-active-class="transition duration-300 ease-out"
+              enter-from-class="opacity-0 max-h-0 scale-95"
+              enter-to-class="opacity-100 max-h-96 scale-100"
+              leave-active-class="transition duration-200 ease-in"
+              leave-from-class="opacity-100 max-h-96 scale-100"
+              leave-to-class="opacity-0 max-h-0 scale-95"
+            >
+              <div v-if="shippingForm.paymentMethod === 'online_pakistan'" class="bg-brand-bg border border-brand-gold/20 p-4 rounded-xl space-y-4 mt-4">
+                <h4 class="text-[10px] tracking-[0.2em] uppercase text-brand-gold font-bold font-sans">Online Pakistan Payment (Mobile Wallets & Bank Transfer)</h4>
+                <div class="space-y-2 text-xs text-brand-text/80">
+                  <p><strong>Supported Gateways:</strong> JazzCash, EasyPaisa, SadaPay, NayaPay, Meezan Bank, HBL, Bank Alfalah.</p>
+                  <p><strong>Account Number:</strong> 03111-418147 (JazzCash)</p>
+                  <p><strong>Account Name:</strong> Cocora Delights</p>
+                  <p class="italic text-[10px]">"Please transfer the total order amount to JazzCash account 03111-418147 or via IBFT, then upload your transaction screenshot receipt below."</p>
+                </div>
+                <div class="space-y-1">
+                  <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="paymentProof">Upload Screenshot Receipt</label>
+                  <input id="paymentProof" type="file" accept="image/*" class="w-full rounded-md p-2 text-xs focus:outline-none border border-brand-gold/20 bg-brand-cream text-brand-cocoa-dark file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-brand-gold/10 file:text-brand-gold hover:file:bg-brand-gold/20 cursor-pointer" @change="onScreenshotUpload" />
+                  <span v-if="errors.paymentProof" class="text-red-500 text-xs font-bold mt-1 block">Please upload payment screenshot proof</span>
                 </div>
               </div>
             </transition>
@@ -272,12 +297,14 @@ const shippingForm = ref({
   cardNumber: '',
   cardExpiry: '',
   cardCvv: '',
+  paymentProof: '', // Base64 image
 });
 
 const errors = ref({
   cardNumber: '',
   expirationDate: '',
-  cvv: ''
+  cvv: '',
+  paymentProof: ''
 });
 
 // Computed items pricing
@@ -311,18 +338,30 @@ const onCountryChange = () => {
   shippingForm.value.shippingCity = availableCities.value[0] || '';
 };
 
+const onScreenshotUpload = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    shippingForm.value.paymentProof = event.target.result;
+    errors.value.paymentProof = '';
+  };
+  reader.readAsDataURL(file);
+};
+
 // Help helper for payment format name
 const getPaymentMethodName = (method) => {
-  if (method === 'whatsapp') return 'WhatsApp Boutique Concierge Confirmation';
-  if (method === 'card') return 'Simulated Credit Card Authorization';
+  if (method === 'whatsapp') return 'WhatsApp Order';
+  if (method === 'card') return 'Credit Card';
+  if (method === 'online_pakistan') return 'Online Pakistan Payment (JazzCash/Bank)';
   return 'Cash on Delivery';
 };
 
 // Formatting helpers for Card inputs
-const formatCardNumber = () => {
-  if (!shippingForm.value.cardNumber) return;
-  let val = shippingForm.value.cardNumber.replace(/\D/g, '');
-  val = val.substring(0, 19);
+const formatCardNumber = (e) => {
+  if (!e.target.value) return;
+  let val = e.target.value.replace(/\D/g, '');
+  val = val.substring(0, 16);
   let parts = [];
   for (let i = 0; i < val.length; i += 4) {
     parts.push(val.substring(i, i + 4));
@@ -330,9 +369,9 @@ const formatCardNumber = () => {
   shippingForm.value.cardNumber = parts.join(' ');
 };
 
-const formatExpiry = () => {
-  if (!shippingForm.value.cardExpiry) return;
-  let val = shippingForm.value.cardExpiry.replace(/\D/g, ''); // Remove non-numeric characters
+const formatExpiry = (e) => {
+  if (!e.target.value) return;
+  let val = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
   
   // Enforce month bounds (01-12)
   if (val.length >= 2) {
@@ -350,9 +389,9 @@ const formatExpiry = () => {
   }
 };
 
-const formatCvv = () => {
-  if (!shippingForm.value.cardCvv) return;
-  shippingForm.value.cardCvv = shippingForm.value.cardCvv.replace(/\D/g, '').substring(0, 4);
+const formatCvv = (e) => {
+  if (!e.target.value) return;
+  shippingForm.value.cardCvv = e.target.value.replace(/\D/g, '').substring(0, 4);
 };
 
 // Pricing formatting
@@ -391,14 +430,14 @@ const validateCard = () => {
   const expRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
   const expirationDate = shippingForm.value.cardExpiry;
   if (!expirationDate || !expRegex.test(expirationDate)) {
-    newErrors.expirationDate = "Invalid Expiration Date (MM/YY)";
+    newErrors.expirationDate = "Invalid Month / Format (MM/YY)";
   } else {
     // Check if date is in the past
     const [month, year] = expirationDate.split('/');
     const expDate = new Date(`20${year}`, month - 1);
     const currentDate = new Date();
     if (expDate < new Date(currentDate.getFullYear(), currentDate.getMonth())) {
-      newErrors.expirationDate = "Card has expired";
+      newErrors.expirationDate = "Invalid Month / Format (MM/YY)";
     }
   }
 
@@ -408,7 +447,7 @@ const validateCard = () => {
     newErrors.cvv = "Invalid CVV";
   }
 
-  errors.value = { cardNumber: '', expirationDate: '', cvv: '', ...newErrors };
+  errors.value = { ...errors.value, cardNumber: '', expirationDate: '', cvv: '', ...newErrors };
   return Object.keys(newErrors).length === 0; // Returns true if valid
 };
 
@@ -419,6 +458,14 @@ const submitOrder = async () => {
 
   if (shippingForm.value.paymentMethod === 'card') {
     if (!validateCard()) {
+      submitting.value = false;
+      return;
+    }
+  }
+
+  if (shippingForm.value.paymentMethod === 'online_pakistan') {
+    if (!shippingForm.value.paymentProof) {
+      errors.value.paymentProof = "Please upload payment screenshot proof";
       submitting.value = false;
       return;
     }
@@ -453,7 +500,8 @@ const submitOrder = async () => {
     signatureCollectionId: cart.value[0]?.type === 'custom' ? null : (cart.value[0]?.id || null),
     quantity: cart.value.reduce((total, item) => total + item.quantity, 0),
     totalPrice: orderTotalCost.value,
-    paymentMethod: shippingForm.value.paymentMethod
+    paymentMethod: getPaymentMethodName(shippingForm.value.paymentMethod),
+    paymentProof: shippingForm.value.paymentMethod === 'online_pakistan' ? shippingForm.value.paymentProof : null
   };
 
   try {

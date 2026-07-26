@@ -49,6 +49,7 @@ export const orders = sqliteTable('orders', {
   quantity: integer('quantity'),
   totalPrice: real('total_price'),
   paymentMethod: text('payment_method'),
+  paymentProof: text('payment_proof'),
   orderStatus: text('order_status'),
   createdAt: text('created_at').default('CURRENT_TIMESTAMP')
 });

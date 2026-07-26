@@ -49,6 +49,13 @@
         <template #createdAt-cell="{ row }">
           <span class="text-xs">{{ new Date(row.original.createdAt).toLocaleDateString() }}</span>
         </template>
+
+        <template #paymentProof-cell="{ row }">
+          <div v-if="row.original.paymentProof" class="w-10 h-10 rounded overflow-hidden border border-brand-gold/20 cursor-pointer" @click.stop="openProofModal(row.original.paymentProof)">
+            <img :src="row.original.paymentProof" class="w-full h-full object-cover" />
+          </div>
+          <span v-else class="text-[10px] text-brand-cream/30 italic">None</span>
+        </template>
         
         <template #actions-cell="{ row }">
           <UButton color="amber" variant="ghost" icon="i-heroicons-chevron-right" class="min-h-[44px] min-w-[44px] flex justify-center items-center" @click.stop="openOrderDetails(row.original)" />
@@ -149,6 +156,19 @@
       </div>
     </USlideover>
 
+    <!-- Proof Modal -->
+    <UModal v-model="isProofModalOpen" :ui="{ width: 'sm:max-w-3xl' }">
+      <div class="p-4 bg-brand-cocoa-dark border border-brand-gold/20 rounded-xl relative">
+        <div class="flex justify-between items-center mb-4 border-b border-brand-gold/10 pb-2">
+          <h3 class="font-serif text-brand-cream text-lg">Transaction Screenshot</h3>
+          <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark" class="min-h-[44px] min-w-[44px] flex justify-center items-center" @click="isProofModalOpen = false" />
+        </div>
+        <div class="flex justify-center bg-black/50 rounded-lg p-2">
+          <img :src="selectedProofImage" class="max-w-full max-h-[70vh] object-contain rounded" />
+        </div>
+      </div>
+    </UModal>
+
   </div>
 </template>
 
@@ -168,6 +188,7 @@ const columns = [
   { accessorKey: 'shippingCity', header: 'City' },
   { accessorKey: 'createdAt', header: 'Date' },
   { accessorKey: 'totalPrice', header: 'Total Value' },
+  { accessorKey: 'paymentProof', header: 'Payment Proof' },
   { id: 'actions' }
 ]
 
@@ -176,7 +197,14 @@ const loading = ref(false)
 const selectedOrder = ref(null)
 const parsedCustomBoxDetails = ref(null)
 const isModalOpen = ref(false)
+const isProofModalOpen = ref(false)
+const selectedProofImage = ref('')
 const config = useRuntimeConfig()
+
+const openProofModal = (base64) => {
+  selectedProofImage.value = base64
+  isProofModalOpen.value = true
+}
 
 const fetchOrders = async () => {
   loading.value = true
