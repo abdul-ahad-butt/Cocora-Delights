@@ -90,47 +90,56 @@ app.post('/api/newsletter', async (c) => {
 // POST place order
 app.post('/api/orders', async (c) => {
   try {
-    // Auto-initialize the database schema (as per diagnostic instruction)
-    await c.env.DB.prepare(`
-      CREATE TABLE IF NOT EXISTS orders (
-        id TEXT PRIMARY KEY,
-        client_name TEXT,
-        order_type TEXT,
-        city TEXT,
-        country TEXT,
-        total_value TEXT,
-        items TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
-    `).run();
-
     const body = await c.req.json();
     const {
       orderId,
-      clientName,
+      customerName,
+      customerEmail,
+      customerPhone,
+      shippingAddress,
+      shippingCity,
+      shippingCountry,
       orderType,
-      city,
-      country,
-      totalValue,
-      items
+      customBoxDetails,
+      signatureCollectionId,
+      quantity,
+      totalPrice,
+      paymentMethod,
+      orderStatus
     } = body;
 
-    const db = drizzle(c.env.DB);
+    const query = `
+      INSERT INTO orders (
+        id, customer_name, customer_email, customer_phone,
+        shipping_address, shipping_city, shipping_country,
+        order_type, custom_box_details, signature_collection_id,
+        quantity, total_price, payment_method, order_status, created_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
 
-    await db.insert(orders).values({
-      id: orderId || 'COC-' + Math.random().toString(36).substring(2, 9).toUpperCase(),
-      clientName: clientName || "Guest",
-      orderType: orderType || "Credit Card",
-      city: city || "",
-      country: country || "",
-      totalValue: totalValue || "0",
-      items: typeof items === 'string' ? items : JSON.stringify(items || []),
-      createdAt: new Date().toISOString(),
-    });
+    const finalOrderId = orderId || 'COC-' + Math.random().toString(36).substring(2, 9).toUpperCase();
+
+    await c.env.DB.prepare(query).bind(
+      finalOrderId,
+      customerName,
+      customerEmail,
+      customerPhone,
+      shippingAddress,
+      shippingCity,
+      shippingCountry,
+      orderType,
+      typeof customBoxDetails === 'object' ? JSON.stringify(customBoxDetails) : customBoxDetails || null,
+      signatureCollectionId || null,
+      quantity || 1,
+      totalPrice,
+      paymentMethod,
+      orderStatus || 'pending',
+      new Date().toISOString()
+    ).run();
 
     return c.json({
       success: true,
-      id: orderId,
+      id: finalOrderId,
       message: 'Order created successfully',
     });
   } catch (error: any) {

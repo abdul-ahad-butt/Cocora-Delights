@@ -37,12 +37,19 @@ export const signatureCollections = sqliteTable('signature_collections', {
 
 export const orders = sqliteTable('orders', {
   id: text('id').primaryKey(),
-  clientName: text('client_name'),
+  customerName: text('customer_name'),
+  customerEmail: text('customer_email'),
+  customerPhone: text('customer_phone'),
+  shippingAddress: text('shipping_address'),
+  shippingCity: text('shipping_city'),
+  shippingCountry: text('shipping_country'),
   orderType: text('order_type'),
-  city: text('city'),
-  country: text('country'),
-  totalValue: text('total_value'),
-  items: text('items'),
+  customBoxDetails: text('custom_box_details'),
+  signatureCollectionId: integer('signature_collection_id'),
+  quantity: integer('quantity'),
+  totalPrice: real('total_price'),
+  paymentMethod: text('payment_method'),
+  orderStatus: text('order_status'),
   createdAt: text('created_at').default('CURRENT_TIMESTAMP')
 });
 
