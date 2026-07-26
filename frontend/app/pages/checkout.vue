@@ -157,17 +157,17 @@
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
                   <div class="sm:col-span-4 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardNumber">Card Number</label>
-                    <input required id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border text-brand-cocoa-dark" :class="errors.cardNumber ? 'border-red-500' : 'border-brand-gold/20'" v-model="shippingForm.cardNumber" @input="formatCardNumber" maxlength="19" />
+                    <input required id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" class="w-full rounded-md p-3 text-xs focus:outline-none border text-brand-cocoa-dark" :class="errors.cardNumber ? 'border-red-500 bg-red-50' : 'border-brand-gold/20 bg-brand-cream'" v-model="shippingForm.cardNumber" @input="formatCardNumber" @blur="validateCard" maxlength="19" />
                     <span v-if="errors.cardNumber" class="text-red-500 text-xs font-semibold mt-1 block">{{ errors.cardNumber }}</span>
                   </div>
                   <div class="sm:col-span-2 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardExpiry">Expiration Date</label>
-                    <input required id="cardExpiry" type="text" placeholder="MM/YY" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border text-brand-cocoa-dark" :class="errors.expirationDate ? 'border-red-500' : 'border-brand-gold/20'" v-model="shippingForm.cardExpiry" @input="formatExpiry" maxlength="5" />
+                    <input required id="cardExpiry" type="text" placeholder="MM/YY" class="w-full rounded-md p-3 text-xs focus:outline-none border text-brand-cocoa-dark" :class="errors.expirationDate ? 'border-red-500 bg-red-50' : 'border-brand-gold/20 bg-brand-cream'" v-model="shippingForm.cardExpiry" @input="formatExpiry" @blur="validateCard" maxlength="5" />
                     <span v-if="errors.expirationDate" class="text-red-500 text-xs font-semibold mt-1 block">{{ errors.expirationDate }}</span>
                   </div>
                   <div class="sm:col-span-2 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardCvv">Security Code (CVV)</label>
-                    <input required id="cardCvv" type="password" placeholder="•••" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border text-brand-cocoa-dark" :class="errors.cvv ? 'border-red-500' : 'border-brand-gold/20'" v-model="shippingForm.cardCvv" @input="formatCvv" maxlength="4" />
+                    <input required id="cardCvv" type="password" placeholder="•••" class="w-full rounded-md p-3 text-xs focus:outline-none border text-brand-cocoa-dark" :class="errors.cvv ? 'border-red-500 bg-red-50' : 'border-brand-gold/20 bg-brand-cream'" v-model="shippingForm.cardCvv" @input="formatCvv" @blur="validateCard" maxlength="4" />
                     <span v-if="errors.cvv" class="text-red-500 text-xs font-semibold mt-1 block">{{ errors.cvv }}</span>
                   </div>
                 </div>
@@ -332,23 +332,22 @@ const formatCardNumber = () => {
 
 const formatExpiry = () => {
   if (!shippingForm.value.cardExpiry) return;
-  let val = shippingForm.value.cardExpiry.replace(/\D/g, '');
+  let val = shippingForm.value.cardExpiry.replace(/\D/g, ''); // Remove non-numeric characters
   
+  // Enforce month bounds (01-12)
   if (val.length >= 2) {
-    let month = parseInt(val.substring(0, 2));
-    if (month > 12 || month === 0) {
-      errors.value.expirationDate = 'Invalid month / format (MM/YY)';
-    } else {
-      errors.value.expirationDate = ''; // Clear error if it was fixed
-    }
-  } else {
-      errors.value.expirationDate = '';
-  }
-
-  if (val.length > 2) {
+    let month = parseInt(val.substring(0, 2), 10);
+    if (month > 12) val = '12' + val.substring(2);
+    if (month === 0) val = '01' + val.substring(2);
     val = val.substring(0, 2) + '/' + val.substring(2, 4);
   }
-  shippingForm.value.cardExpiry = val.substring(0, 5);
+  
+  shippingForm.value.cardExpiry = val.slice(0, 5); // Cap at 5 chars (MM/YY)
+  
+  // Clear error while typing if valid format
+  if (val.length === 5) {
+    errors.value.expirationDate = '';
+  }
 };
 
 const formatCvv = () => {
@@ -380,35 +379,37 @@ const formatPrice = (value) => {
 };
 
 const validateCard = () => {
-  let isValid = true;
-  errors.value = { cardNumber: '', expirationDate: '', cvv: '' };
+  const newErrors = {};
 
-  const num = shippingForm.value.cardNumber.replace(/\D/g, '');
-  if (num.length < 15 || num.length > 19) {
-    errors.value.cardNumber = 'Invalid card number';
-    isValid = false;
+  // Validate Card Number
+  const rawCard = shippingForm.value.cardNumber.replace(/\s/g, '');
+  if (!rawCard || rawCard.length < 15) {
+    newErrors.cardNumber = "Invalid Card Number";
   }
 
-  const exp = shippingForm.value.cardExpiry;
-  if (!/^\d{2}\/\d{2}$/.test(exp)) {
-    errors.value.expirationDate = 'Invalid month / format (MM/YY)';
-    isValid = false;
+  // Validate Expiration Date (Format must be MM/YY and not expired)
+  const expRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+  const expirationDate = shippingForm.value.cardExpiry;
+  if (!expirationDate || !expRegex.test(expirationDate)) {
+    newErrors.expirationDate = "Invalid Expiration Date (MM/YY)";
   } else {
-    const [mm, yy] = exp.split('/');
-    const month = parseInt(mm);
-    if (month < 1 || month > 12) {
-      errors.value.expirationDate = 'Invalid month / format (MM/YY)';
-      isValid = false;
+    // Check if date is in the past
+    const [month, year] = expirationDate.split('/');
+    const expDate = new Date(`20${year}`, month - 1);
+    const currentDate = new Date();
+    if (expDate < new Date(currentDate.getFullYear(), currentDate.getMonth())) {
+      newErrors.expirationDate = "Card has expired";
     }
   }
 
+  // Validate CVV
   const cvv = shippingForm.value.cardCvv;
-  if (cvv.length < 3 || cvv.length > 4) {
-    errors.value.cvv = 'Invalid CVV';
-    isValid = false;
+  if (!cvv || cvv.length < 3) {
+    newErrors.cvv = "Invalid CVV";
   }
 
-  return isValid;
+  errors.value = { cardNumber: '', expirationDate: '', cvv: '', ...newErrors };
+  return Object.keys(newErrors).length === 0; // Returns true if valid
 };
 
 // Order placement logic
