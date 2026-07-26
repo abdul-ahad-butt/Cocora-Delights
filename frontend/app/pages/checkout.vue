@@ -157,7 +157,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
                   <div class="sm:col-span-4 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardNumber">Card Number</label>
-                    <input required id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" :class="{'border-brand-burgundy/50': cardErrors.cardNumber}" v-model="shippingForm.cardNumber" @input="formatCardNumber" maxlength="23" />
+                    <input required id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" :class="{'border-brand-burgundy/50': cardErrors.cardNumber}" v-model="shippingForm.cardNumber" @input="formatCardNumber" maxlength="19" />
                     <p v-if="cardErrors.cardNumber" class="text-[9px] text-brand-burgundy font-medium mt-1">{{ cardErrors.cardNumber }}</p>
                   </div>
                   <div class="sm:col-span-2 space-y-1">
@@ -417,7 +417,7 @@ const validateCard = () => {
     const month = parseInt(mm);
     const year = parseInt('20' + yy);
     if (month < 1 || month > 12) {
-      cardErrors.value.cardExpiry = 'Invalid expiration month.';
+      cardErrors.value.cardExpiry = 'Invalid month (01-12)';
       isValid = false;
     } else {
       const now = new Date();
