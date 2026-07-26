@@ -157,15 +157,18 @@
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
                   <div class="sm:col-span-4 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardNumber">Card Number</label>
-                    <input required id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" v-model="shippingForm.cardNumber" @input="formatCardNumber" maxlength="23" />
+                    <input required id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" :class="{'border-brand-burgundy/50': cardErrors.cardNumber}" v-model="shippingForm.cardNumber" @input="formatCardNumber" maxlength="23" />
+                    <p v-if="cardErrors.cardNumber" class="text-[9px] text-brand-burgundy font-medium mt-1">{{ cardErrors.cardNumber }}</p>
                   </div>
                   <div class="sm:col-span-2 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardExpiry">Expiration Date</label>
-                    <input required id="cardExpiry" type="text" placeholder="MM/YY" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" v-model="shippingForm.cardExpiry" @input="formatExpiry" maxlength="5" />
+                    <input required id="cardExpiry" type="text" placeholder="MM/YY" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" :class="{'border-brand-burgundy/50': cardErrors.cardExpiry}" v-model="shippingForm.cardExpiry" @input="formatExpiry" maxlength="5" />
+                    <p v-if="cardErrors.cardExpiry" class="text-[9px] text-brand-burgundy font-medium mt-1">{{ cardErrors.cardExpiry }}</p>
                   </div>
                   <div class="sm:col-span-2 space-y-1">
                     <label class="text-[9px] tracking-wider uppercase text-brand-text/50 font-sans" for="cardCvv">Security Code (CVV)</label>
-                    <input required id="cardCvv" type="password" placeholder="•••" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" v-model="shippingForm.cardCvv" @input="formatCvv" maxlength="4" />
+                    <input required id="cardCvv" type="password" placeholder="•••" class="w-full bg-brand-cream rounded-lg p-2.5 text-xs focus:outline-none border border-brand-gold/20 text-brand-cocoa-dark" :class="{'border-brand-burgundy/50': cardErrors.cardCvv}" v-model="shippingForm.cardCvv" @input="formatCvv" maxlength="4" />
+                    <p v-if="cardErrors.cardCvv" class="text-[9px] text-brand-burgundy font-medium mt-1">{{ cardErrors.cardCvv }}</p>
                   </div>
                 </div>
               </div>
@@ -271,6 +274,12 @@ const shippingForm = ref({
   cardCvv: '',
 });
 
+const cardErrors = ref({
+  cardNumber: '',
+  cardExpiry: '',
+  cardCvv: ''
+});
+
 // Computed items pricing
 const cartSubtotal = computed(() => {
   return cart.value.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -371,10 +380,76 @@ const formatPrice = (value) => {
   }
 };
 
+const validateCard = () => {
+  let isValid = true;
+  cardErrors.value = { cardNumber: '', cardExpiry: '', cardCvv: '' };
+
+  const num = shippingForm.value.cardNumber.replace(/\D/g, '');
+  if (num.length < 15 || num.length > 16) {
+    cardErrors.value.cardNumber = 'Card number must be 15 or 16 digits.';
+    isValid = false;
+  } else {
+    let sum = 0;
+    let alternate = false;
+    for (let i = num.length - 1; i >= 0; i--) {
+      let n = parseInt(num.substring(i, i + 1));
+      if (alternate) {
+        n *= 2;
+        if (n > 9) {
+          n = (n % 10) + 1;
+        }
+      }
+      sum += n;
+      alternate = !alternate;
+    }
+    if (sum % 10 !== 0) {
+      cardErrors.value.cardNumber = 'Invalid card number.';
+      isValid = false;
+    }
+  }
+
+  const exp = shippingForm.value.cardExpiry;
+  if (!/^\d{2}\/\d{2}$/.test(exp)) {
+    cardErrors.value.cardExpiry = 'Format must be MM/YY.';
+    isValid = false;
+  } else {
+    const [mm, yy] = exp.split('/');
+    const month = parseInt(mm);
+    const year = parseInt('20' + yy);
+    if (month < 1 || month > 12) {
+      cardErrors.value.cardExpiry = 'Invalid expiration month.';
+      isValid = false;
+    } else {
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      const currentMonth = now.getMonth() + 1;
+      if (year < currentYear || (year === currentYear && month < currentMonth)) {
+        cardErrors.value.cardExpiry = 'Card has expired.';
+        isValid = false;
+      }
+    }
+  }
+
+  const cvv = shippingForm.value.cardCvv;
+  if (cvv.length < 3 || cvv.length > 4) {
+    cardErrors.value.cardCvv = 'CVV must be 3 or 4 digits.';
+    isValid = false;
+  }
+
+  return isValid;
+};
+
 // Order placement logic
 const submitOrder = async () => {
   submitting.value = true;
   submitError.value = '';
+
+  if (shippingForm.value.paymentMethod === 'card') {
+    if (!validateCard()) {
+      submitting.value = false;
+      return;
+    }
+  }
   
   // Format cart list item strings for API storage and WhatsApp messages
   const cartSummary = cart.value.map(item => {
