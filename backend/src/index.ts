@@ -90,6 +90,20 @@ app.post('/api/newsletter', async (c) => {
 // POST place order
 app.post('/api/orders', async (c) => {
   try {
+    // Auto-initialize the database schema (as per diagnostic instruction)
+    await c.env.DB.prepare(`
+      CREATE TABLE IF NOT EXISTS orders (
+        id TEXT PRIMARY KEY,
+        client_name TEXT,
+        order_type TEXT,
+        city TEXT,
+        country TEXT,
+        total_value TEXT,
+        items TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `).run();
+
     const body = await c.req.json();
     const {
       orderId,
@@ -105,12 +119,12 @@ app.post('/api/orders', async (c) => {
 
     await db.insert(orders).values({
       id: orderId || 'COC-' + Math.random().toString(36).substring(2, 9).toUpperCase(),
-      clientName,
-      orderType,
-      city,
-      country,
-      totalValue,
-      items: typeof items === 'string' ? items : JSON.stringify(items),
+      clientName: clientName || "Guest",
+      orderType: orderType || "Credit Card",
+      city: city || "",
+      country: country || "",
+      totalValue: totalValue || "0",
+      items: typeof items === 'string' ? items : JSON.stringify(items || []),
       createdAt: new Date().toISOString(),
     });
 
@@ -120,7 +134,7 @@ app.post('/api/orders', async (c) => {
       message: 'Order created successfully',
     });
   } catch (error: any) {
-    return c.json({ success: false, error: error.message }, 500);
+    return c.json({ success: false, error: error.message, stack: error.stack }, 500);
   }
 });
 
