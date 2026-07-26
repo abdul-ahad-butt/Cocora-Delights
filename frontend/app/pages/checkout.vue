@@ -536,8 +536,17 @@ const submitOrder = async () => {
       
       // If payment method is WhatsApp, compile a gorgeous prefilled message
       if (shippingForm.value.paymentMethod === 'whatsapp') {
-        const text = `Greetings Cocora Concierge! 🍫\n\nI would like to place a luxury chocolate order:\n\n*Order ID:* ${json.id}\n*Client:* ${shippingForm.value.customerName}\n*City:* ${shippingForm.value.shippingCity}\n*Address:* ${shippingForm.value.shippingAddress}\n*Selections:* ${cartSummary}\n*Total Price:* ${formatPrice(orderTotalCost.value)}\n\nPlease confirm my delivery slot! Thank you.`;
-        whatsappUrl.value = `https://wa.me/923000000000?text=${encodeURIComponent(text)}`;
+        const text = `*New Order - Cocora Delights*
+--------------------------------
+*Name:* ${shippingForm.value.customerName}
+*Phone:* ${shippingForm.value.customerPhone}
+*Address:* ${shippingForm.value.shippingAddress}, ${shippingForm.value.shippingCity}, ${shippingForm.value.shippingCountry}
+*Payment Method:* WhatsApp Direct
+*Total:* ${formatPrice(orderTotalCost.value)}
+
+*Items Ordered:*
+${cartSummary}`;
+        whatsappUrl.value = `https://wa.me/923147640697?text=${encodeURIComponent(text)}`;
         
         // Auto redirect to WhatsApp after short delay
         setTimeout(() => {
@@ -560,8 +569,17 @@ const submitOrder = async () => {
     };
     
     if (shippingForm.value.paymentMethod === 'whatsapp') {
-      const text = `Greetings Cocora Concierge! 🍫\n\nI would like to place a luxury chocolate order:\n\n*Order ID:* ${fallbackId}\n*Client:* ${shippingForm.value.customerName}\n*City:* ${shippingForm.value.shippingCity}\n*Address:* ${shippingForm.value.shippingAddress}\n*Selections:* ${cartSummary}\n*Total Price:* ${formatPrice(orderTotalCost.value)}\n\nPlease confirm my delivery slot! Thank you.`;
-      whatsappUrl.value = `https://wa.me/923000000000?text=${encodeURIComponent(text)}`;
+      const text = `*New Order - Cocora Delights*
+--------------------------------
+*Name:* ${shippingForm.value.customerName}
+*Phone:* ${shippingForm.value.customerPhone}
+*Address:* ${shippingForm.value.shippingAddress}, ${shippingForm.value.shippingCity}, ${shippingForm.value.shippingCountry}
+*Payment Method:* WhatsApp Direct
+*Total:* ${formatPrice(orderTotalCost.value)}
+
+*Items Ordered:*
+${cartSummary}`;
+      whatsappUrl.value = `https://wa.me/923147640697?text=${encodeURIComponent(text)}`;
       setTimeout(() => {
         window.open(whatsappUrl.value, '_blank');
       }, 1500);
