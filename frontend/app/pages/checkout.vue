@@ -333,23 +333,22 @@ const formatCardNumber = () => {
 const formatExpiry = () => {
   if (!shippingForm.value.cardExpiry) return;
   let val = shippingForm.value.cardExpiry.replace(/\D/g, '');
-  if (val.length > 0) {
-    if (val.length === 1 && parseInt(val) > 1) {
-      val = '0' + val;
-    }
-  }
+  
   if (val.length >= 2) {
     let month = parseInt(val.substring(0, 2));
-    if (month > 12) {
-      val = '12' + val.substring(2);
-    } else if (month === 0) {
-      val = '01' + val.substring(2);
+    if (month > 12 || month === 0) {
+      cardErrors.value.cardExpiry = 'Invalid month (01-12)';
+    } else {
+      cardErrors.value.cardExpiry = ''; // Clear error if it was fixed
     }
+  } else {
+      cardErrors.value.cardExpiry = '';
   }
+
   if (val.length > 2) {
     val = val.substring(0, 2) + '/' + val.substring(2, 4);
   }
-  shippingForm.value.cardExpiry = val;
+  shippingForm.value.cardExpiry = val.substring(0, 5);
 };
 
 const formatCvv = () => {
@@ -460,22 +459,21 @@ const submitOrder = async () => {
     return desc;
   }).join(', ');
 
+  const orderId = 'COC-' + Math.random().toString(36).substring(2, 9).toUpperCase();
+
   const payload = {
-    customerName: shippingForm.value.customerName,
-    customerEmail: shippingForm.value.customerEmail,
-    customerPhone: shippingForm.value.customerPhone,
-    shippingAddress: shippingForm.value.shippingAddress,
-    shippingCity: shippingForm.value.shippingCity,
-    shippingCountry: shippingForm.value.shippingCountry,
+    orderId: orderId,
+    clientName: shippingForm.value.customerName,
     orderType: cart.value[0]?.type === 'custom' ? 'custom_box' : 'signature_collection',
-    customBoxDetails: cart.value.map(c => ({
+    city: shippingForm.value.shippingCity,
+    country: shippingForm.value.shippingCountry,
+    totalValue: formatPrice(orderTotalCost.value),
+    items: JSON.stringify(cart.value.map(c => ({
       name: c.name,
       price: c.price,
       quantity: c.quantity,
       details: c.customDetails || null
-    })),
-    totalPrice: orderTotalCost.value,
-    paymentMethod: shippingForm.value.paymentMethod
+    })))
   };
 
   try {
@@ -489,11 +487,15 @@ const submitOrder = async () => {
     const json = await res.json();
     
     if (json.success) {
-      orderResult.value = json.data;
+      orderResult.value = {
+        orderId: json.id,
+        customerName: shippingForm.value.customerName,
+        totalPrice: orderTotalCost.value
+      };
       
       // If payment method is WhatsApp, compile a gorgeous prefilled message
       if (shippingForm.value.paymentMethod === 'whatsapp') {
-        const text = `Greetings Cocora Concierge! 🍫\n\nI would like to place a luxury chocolate order:\n\n*Order ID:* ${json.data.orderId}\n*Client:* ${shippingForm.value.customerName}\n*City:* ${shippingForm.value.shippingCity}\n*Address:* ${shippingForm.value.shippingAddress}\n*Selections:* ${cartSummary}\n*Total Price:* ${formatPrice(orderTotalCost.value)}\n\nPlease confirm my delivery slot! Thank you.`;
+        const text = `Greetings Cocora Concierge! 🍫\n\nI would like to place a luxury chocolate order:\n\n*Order ID:* ${json.id}\n*Client:* ${shippingForm.value.customerName}\n*City:* ${shippingForm.value.shippingCity}\n*Address:* ${shippingForm.value.shippingAddress}\n*Selections:* ${cartSummary}\n*Total Price:* ${formatPrice(orderTotalCost.value)}\n\nPlease confirm my delivery slot! Thank you.`;
         whatsappUrl.value = `https://wa.me/923000000000?text=${encodeURIComponent(text)}`;
         
         // Auto redirect to WhatsApp after short delay

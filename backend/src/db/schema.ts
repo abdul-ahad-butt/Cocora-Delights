@@ -36,21 +36,14 @@ export const signatureCollections = sqliteTable('signature_collections', {
 });
 
 export const orders = sqliteTable('orders', {
-  id: text('id').primaryKey(), // Generated client-side or server-side ID
-  customerName: text('customer_name').notNull(),
-  customerEmail: text('customer_email').notNull(),
-  customerPhone: text('customer_phone').notNull(),
-  shippingAddress: text('shipping_address').notNull(),
-  shippingCity: text('shipping_city').notNull(),
-  shippingCountry: text('shipping_country').notNull(),
-  orderType: text('order_type').notNull(), // 'custom_box' or 'signature_collection'
-  customBoxDetails: text('custom_box_details'), // JSON structure: { boxSize: 9|16|25, boxColor: string, chocolates: [{position: number, productId: number, filling: string}], giftMessage: string }
-  signatureCollectionId: integer('signature_collection_id').references(() => signatureCollections.id),
-  quantity: integer('quantity').notNull().default(1),
-  totalPrice: real('total_price').notNull(),
-  paymentMethod: text('payment_method').notNull(), // 'card', 'whatsapp', 'cod'
-  orderStatus: text('order_status').notNull().default('pending'),
-  createdAt: text('created_at').notNull()
+  id: text('id').primaryKey(),
+  clientName: text('client_name'),
+  orderType: text('order_type'),
+  city: text('city'),
+  country: text('country'),
+  totalValue: text('total_value'),
+  items: text('items'),
+  createdAt: text('created_at').default('CURRENT_TIMESTAMP')
 });
 
 export const newsletterSubscribers = sqliteTable('newsletter_subscribers', {

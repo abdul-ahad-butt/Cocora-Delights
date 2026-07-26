@@ -92,106 +92,42 @@ app.post('/api/orders', async (c) => {
   try {
     const body = await c.req.json();
     const {
-      customerName,
-      customerEmail,
-      customerPhone,
-      shippingAddress,
-      shippingCity,
-      shippingCountry,
+      orderId,
+      clientName,
       orderType,
-      customBoxDetails,
-      signatureCollectionId,
-      quantity,
-      totalPrice,
-      paymentMethod,
+      city,
+      country,
+      totalValue,
+      items
     } = body;
 
-    // Validate fields
-    if (!customerName || !customerEmail || !customerPhone || !shippingAddress || !shippingCity || !shippingCountry || !orderType || !totalPrice || !paymentMethod) {
-      return c.json({ success: false, error: 'Missing required shipping or order details' }, 400);
-    }
-
-    const orderId = 'COC-' + Math.random().toString(36).substring(2, 9).toUpperCase();
     const db = drizzle(c.env.DB);
 
     await db.insert(orders).values({
-      id: orderId,
-      customerName,
-      customerEmail,
-      customerPhone,
-      shippingAddress,
-      shippingCity,
-      shippingCountry,
+      id: orderId || 'COC-' + Math.random().toString(36).substring(2, 9).toUpperCase(),
+      clientName,
       orderType,
-      customBoxDetails: customBoxDetails ? JSON.stringify(customBoxDetails) : null,
-      signatureCollectionId: signatureCollectionId ? Number(signatureCollectionId) : null,
-      quantity: quantity ? Number(quantity) : 1,
-      totalPrice: Number(totalPrice),
-      paymentMethod,
-      orderStatus: 'pending',
+      city,
+      country,
+      totalValue,
+      items: typeof items === 'string' ? items : JSON.stringify(items),
       createdAt: new Date().toISOString(),
     });
 
     return c.json({
       success: true,
+      id: orderId,
       message: 'Order created successfully',
-      data: {
-        orderId,
-        totalPrice,
-        customerName,
-      }
     });
   } catch (error: any) {
     return c.json({ success: false, error: error.message }, 500);
   }
 });
 
-// POST admin login
-app.post('/api/admin/login', async (c) => {
+// GET all orders for Admin Panel (unauthenticated as requested by diagnostic prompt)
+app.get('/api/orders', async (c) => {
   try {
-    const body = await c.req.json();
-    const { username, password } = body;
-
-    const expectedUsername = c.env.ADMIN_USERNAME || 'Admin123';
-    const expectedPassword = c.env.ADMIN_PASSWORD || 'Cocora-@#Delights';
-    const jwtSecret = c.env.JWT_SECRET || 'fallback_secret';
-
-    if (username === expectedUsername && password === expectedPassword) {
-      const payload = {
-        username: username,
-        role: 'admin',
-        exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 // 24 hours expiry
-      };
-      const token = await sign(payload, jwtSecret);
-      return c.json({ success: true, token });
-    }
-
-    return c.json({ success: false, error: 'Invalid credentials' }, 401);
-  } catch (error: any) {
-    return c.json({ success: false, error: error.message }, 500);
-  }
-});
-
-// GET admin orders
-app.get('/api/admin/orders', async (c) => {
-  try {
-    // Basic JWT verification
-    const authHeader = c.req.header('Authorization');
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return c.json({ success: false, error: 'Unauthorized' }, 401);
-    }
-    
-    const token = authHeader.split(' ')[1];
-    const jwtSecret = c.env.JWT_SECRET || 'fallback_secret';
-    
-    try {
-      await verify(token, jwtSecret, "HS256");
-    } catch (e) {
-      return c.json({ success: false, error: 'Invalid or expired token' }, 401);
-    }
-
     const db = drizzle(c.env.DB);
-    // Fetch all orders ordered by latest first
     const results = await db.select().from(orders).orderBy(desc(orders.createdAt)).all();
     
     return c.json({ success: true, data: results });

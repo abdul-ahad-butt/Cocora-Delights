@@ -77,15 +77,11 @@
             <div class="grid grid-cols-2 gap-4 text-sm text-brand-cream/80">
               <div>
                 <p class="text-[10px] uppercase text-brand-cream/40 mb-1">Name</p>
-                <p class="font-medium text-brand-cream">{{ selectedOrder.customerName }}</p>
+                <p class="font-medium text-brand-cream">{{ selectedOrder.clientName }}</p>
               </div>
               <div>
-                <p class="text-[10px] uppercase text-brand-cream/40 mb-1">Contact</p>
-                <p>{{ selectedOrder.customerEmail }}<br>{{ selectedOrder.customerPhone }}</p>
-              </div>
-              <div class="col-span-2 mt-2">
-                <p class="text-[10px] uppercase text-brand-cream/40 mb-1">Address</p>
-                <p>{{ selectedOrder.shippingAddress }}, {{ selectedOrder.shippingCity }}, {{ selectedOrder.shippingCountry }}</p>
+                <p class="text-[10px] uppercase text-brand-cream/40 mb-1">Location</p>
+                <p>{{ selectedOrder.city }}, {{ selectedOrder.country }}</p>
               </div>
             </div>
           </section>
@@ -143,7 +139,7 @@
         <!-- Footer -->
         <div class="border-t border-brand-gold/10 pt-6 mt-8 flex justify-between items-center text-brand-cream font-serif">
           <span class="text-sm text-brand-cream/50 uppercase tracking-widest">Total Revenue</span>
-          <span class="text-2xl font-bold text-brand-gold">{{ formatPrice(selectedOrder.totalPrice) }}</span>
+          <span class="text-2xl font-bold text-brand-gold">{{ selectedOrder.totalValue }}</span>
         </div>
 
       </div>
@@ -163,11 +159,11 @@ useHead({
 
 const columns = [
   { accessorKey: 'id', header: 'Order ID' },
-  { accessorKey: 'customerName', header: 'Client Name' },
+  { accessorKey: 'clientName', header: 'Client Name' },
   { accessorKey: 'orderType', header: 'Order Type' },
-  { accessorKey: 'shippingCity', header: 'City' },
+  { accessorKey: 'city', header: 'City' },
   { accessorKey: 'createdAt', header: 'Date' },
-  { accessorKey: 'totalPrice', header: 'Total Value' },
+  { accessorKey: 'totalValue', header: 'Total Value' },
   { id: 'actions' }
 ]
 
@@ -183,7 +179,7 @@ const fetchOrders = async () => {
   try {
     const token = useCookie('admin_token').value
 
-    const res = await $fetch(`${config.public.apiBase}/api/admin/orders`, {
+    const res = await $fetch(`${config.public.apiBase}/api/orders`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -210,9 +206,9 @@ onMounted(() => {
 
 const openOrderDetails = (order) => {
   selectedOrder.value = order
-  if (order.customBoxDetails) {
+  if (order.items) {
     try {
-      parsedCustomBoxDetails.value = JSON.parse(order.customBoxDetails)
+      parsedCustomBoxDetails.value = JSON.parse(order.items)
     } catch (e) {
       parsedCustomBoxDetails.value = []
     }
