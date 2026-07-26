@@ -91,7 +91,7 @@
         leave-from-class="translate-x-0"
         leave-to-class="translate-x-full"
       >
-        <div v-if="isMobileMenuOpen" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-brand-bg shadow-2xl z-50 md:hidden flex flex-col overflow-y-auto">
+        <div v-if="isMobileMenuOpen" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-brand-bg shadow-2xl z-50 md:hidden flex flex-col overflow-y-auto" style="padding-bottom: env(safe-area-inset-bottom);">
           <div class="px-4 py-6 flex justify-end">
             <button @click="isMobileMenuOpen = false" class="p-3 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300" aria-label="Close Menu">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -140,7 +140,7 @@
       leave-from-class="translate-x-0"
       leave-to-class="translate-x-full"
     >
-      <div v-if="isCartOpen" class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-brand-bg shadow-2xl z-50 flex flex-col border-l border-brand-gold/10">
+      <div v-if="isCartOpen" class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-brand-bg shadow-2xl z-50 flex flex-col border-l border-brand-gold/10" style="padding-bottom: env(safe-area-inset-bottom);">
         <!-- Drawer Header -->
         <div class="p-6 border-b border-brand-gold/10 flex items-center justify-between bg-brand-cream">
           <div class="flex items-center space-x-3">

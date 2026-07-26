@@ -114,7 +114,7 @@
               <button 
                 type="button" 
                 @click="shippingForm.paymentMethod = 'whatsapp'"
-                class="p-4 rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
+                class="p-4 min-h-[44px] rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
                 :class="shippingForm.paymentMethod === 'whatsapp' ? 'border-brand-gold bg-brand-bg font-semibold' : 'border-brand-gold/20 hover:border-brand-gold'"
               >
                 <!-- Whatsapp Icon representation -->
@@ -125,7 +125,7 @@
               <button 
                 type="button" 
                 @click="shippingForm.paymentMethod = 'card'"
-                class="p-4 rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
+                class="p-4 min-h-[44px] rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
                 :class="shippingForm.paymentMethod === 'card' ? 'border-brand-gold bg-brand-bg font-semibold' : 'border-brand-gold/20 hover:border-brand-gold'"
               >
                 <span class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xs font-bold font-sans">💳</span>
@@ -135,7 +135,7 @@
               <button 
                 type="button" 
                 @click="shippingForm.paymentMethod = 'cod'"
-                class="p-4 rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
+                class="p-4 min-h-[44px] rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
                 :class="shippingForm.paymentMethod === 'cod' ? 'border-brand-gold bg-brand-bg font-semibold' : 'border-brand-gold/20 hover:border-brand-gold'"
               >
                 <span class="w-6 h-6 rounded-full bg-brand-caramel/20 text-brand-caramel flex items-center justify-center text-xs font-bold font-sans">💵</span>
@@ -175,11 +175,11 @@
             </transition>
           </div>
 
-          <div class="pt-4 border-t border-brand-gold/10 flex items-center justify-between">
+          <div class="pt-4 border-t border-brand-gold/10 flex flex-col sm:flex-row items-center justify-between gap-4">
             <span v-if="submitError" class="text-xs text-brand-burgundy font-medium animate-pulse">{{ submitError }}</span>
             <button 
               type="submit" 
-              class="w-full py-4 rounded-full text-xs tracking-widest font-semibold btn-luxury-cocoa uppercase shadow-lg text-center"
+              class="w-full py-4 min-h-[44px] rounded-full text-xs tracking-widest font-semibold btn-luxury-cocoa uppercase shadow-lg text-center"
               :disabled="submitting"
             >
               {{ submitting ? 'Processing Order...' : shippingForm.paymentMethod === 'whatsapp' ? 'Place Order & Open WhatsApp' : 'Submit Luxury Order' }}

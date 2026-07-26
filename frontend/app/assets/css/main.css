@@ -76,3 +76,27 @@ html {
   transform: translateY(-4px);
   box-shadow: 0 16px 40px rgba(45, 42, 40, 0.08);
 }
+
+/* Mobile & Touch Optimizations */
+html, body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Dynamic viewport height for mobile browsers */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Prevent horizontal overflow on images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent iOS Safari form zoom */
+@media (max-width: 767px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}

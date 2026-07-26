@@ -11,14 +11,14 @@
         variant="ghost" 
         @click="fetchOrders" 
         :loading="loading"
-        class="text-brand-gold hover:bg-brand-gold/10"
+        class="text-brand-gold hover:bg-brand-gold/10 min-h-[44px] min-w-[44px] flex justify-center items-center"
       >
         Refresh Data
       </UButton>
     </div>
 
     <!-- Nuxt UI Data Table -->
-    <div class="bg-brand-cocoa-dark border border-brand-gold/10 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="bg-brand-cocoa-dark border border-brand-gold/10 rounded-2xl shadow-2xl overflow-x-auto" style="-webkit-overflow-scrolling: touch;">
       <UTable 
         :rows="orders" 
         :columns="columns" 
@@ -51,7 +51,7 @@
         </template>
         
         <template #actions-cell="{ row }">
-          <UButton color="amber" variant="ghost" icon="i-heroicons-chevron-right" @click.stop="openOrderDetails(row.original)" />
+          <UButton color="amber" variant="ghost" icon="i-heroicons-chevron-right" class="min-h-[44px] min-w-[44px] flex justify-center items-center" @click.stop="openOrderDetails(row.original)" />
         </template>
       </UTable>
     </div>
@@ -65,7 +65,7 @@
             <h2 class="font-serif text-2xl text-brand-cream font-bold">Order Details</h2>
             <p class="text-[10px] font-mono text-brand-gold mt-1">{{ selectedOrder.id }}</p>
           </div>
-          <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark" @click="isModalOpen = false" />
+          <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark" class="min-h-[44px] min-w-[44px] flex justify-center items-center" @click="isModalOpen = false" />
         </div>
 
         <div class="space-y-8 grow">
