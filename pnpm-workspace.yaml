@@ -6,10 +6,10 @@ packages:
 allowBuilds:
   "@parcel/watcher": true
   "esbuild": true
-  sharp: set this to true or false
+  sharp: true
   "unrs-resolver": true
   "vue-demi": true
-  workerd: set this to true or false
+  workerd: true
 
 minimumReleaseAgeExclude:
   - '@nuxt/ui@4.10.0'

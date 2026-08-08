@@ -16,8 +16,14 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'cloudflare-pages'
+    preset: 'cloudflare-pages',
+    minify: false,
+    output: {
+      dir: '.output/public',
+      publicDir: '.output/public'
+    }
   },
+  ssr: false,
 
   app: {
     head: {

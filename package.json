@@ -10,15 +10,5 @@
     "db:generate": "pnpm --filter backend run db:generate",
     "db:migrate": "pnpm --filter backend run db:migrate"
   },
-  "packageManager": "pnpm@11.13.1",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "esbuild",
-      "sharp",
-      "unrs-resolver",
-      "vue-demi",
-      "workerd"
-    ]
-  }
+  "packageManager": "pnpm@11.13.1"
 }
