@@ -555,8 +555,8 @@ const craftProcess = [
 ];
 
 const testimonials = [
-  { text: "We ordered Celebration No. 8 arrangements for our anniversary in Dubai. The cream lacquer box, silk ribbon, and personalized card message made it feel extremely premium. The date praline tasted fresh and luxurious.", author: "Amna Rehman", location: "Dubai, UAE" },
-  { text: "My corporate clients in Riyadh were amazed by the customized gold foil box coordinates we ordered. Cocora's temperature-controlled courier delivered them in perfect condition. Exceptional service.", author: "Farhan Malik", location: "Riyadh, Saudi Arabia" },
+  { text: "We ordered Celebration No. 8 arrangements for our anniversary in Lahore. The cream lacquer box, silk ribbon, and personalized card message made it feel extremely premium. The date praline tasted fresh and luxurious.", author: "Amna Rehman", location: "DHA, Lahore" },
+  { text: "My corporate clients in Lahore were amazed by the customized gold foil box coordinates we ordered. Cocora's temperature-controlled courier delivered them in perfect condition. Exceptional service.", author: "Farhan Malik", location: "Gulberg, Lahore" },
   { text: "Crafting our own box was such an emotional experience. Spelled out MOM with the gold letter engravings for her birthday. It is not just chocolate; it's a piece of art.", author: "Zainab Yusuf", location: "Karachi, Pakistan" }
 ];
 
