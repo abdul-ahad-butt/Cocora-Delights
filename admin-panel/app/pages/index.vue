@@ -211,7 +211,8 @@ const fetchOrders = async (silent = false) => {
   try {
     const token = useCookie('admin_token').value
 
-    const res = await $fetch(`${config.public.apiBase}/api/orders`, {
+    const apiBase = useApiBase()
+    const res = await $fetch(`${apiBase}/api/orders`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

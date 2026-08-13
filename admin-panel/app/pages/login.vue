@@ -91,7 +91,8 @@ const handleLogin = async () => {
 
   try {
     // Append /api/admin/login to API base
-    const res = await $fetch(`${config.public.apiBase}/api/admin/login`, {
+    const apiBase = useApiBase()
+    const res = await $fetch(`${apiBase}/api/admin/login`, {
       method: 'POST',
       body: {
         username: username.value,
