@@ -253,15 +253,15 @@
               Harvested at their vibrant green peak and stone-ground over 24 hours to create an incredibly silky, intensely flavored praline filling that melts like butter on the tongue.
             </p>
           </div>
-          <div class="lg:col-span-7 order-1 lg:order-2 h-80 rounded-2xl overflow-hidden border border-brand-gold/10 shadow-lg">
-            <img src="/images/category_pistachio.png" alt="Premium Green Pistachios" class="w-full h-full object-cover hover:scale-[1.01] transition-transform duration-700" loading="lazy" decoding="async" />
+          <div class="lg:col-span-7 order-1 lg:order-2 aspect-[4/3] w-full rounded-2xl overflow-hidden border border-brand-gold/10 shadow-lg">
+            <img src="/images/category_pistachio.png" alt="Premium Green Pistachios" class="w-full h-full object-cover object-center hover:scale-[1.01] transition-transform duration-700" loading="lazy" decoding="async" />
           </div>
         </div>
 
         <!-- Ingredient Row 2: Cacao -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div class="lg:col-span-7 h-80 rounded-2xl overflow-hidden border border-brand-gold/10 shadow-lg">
-            <img src="/images/category_almond.png" alt="Belgian Cocoa Bean" class="w-full h-full object-cover hover:scale-[1.01] transition-transform duration-700" loading="lazy" decoding="async" />
+          <div class="lg:col-span-7 aspect-[4/3] w-full rounded-2xl overflow-hidden border border-brand-gold/10 shadow-lg">
+            <img src="/images/category_almond.png" alt="Belgian Cocoa Bean" class="w-full h-full object-cover object-center hover:scale-[1.01] transition-transform duration-700" loading="lazy" decoding="async" />
           </div>
           <div class="lg:col-span-5 space-y-6 text-left">
             <span class="text-xs font-sans tracking-[0.2em] text-brand-gold uppercase font-semibold">BELGIAN SOURCING</span>
@@ -301,8 +301,8 @@
         </ul>
       </div>
 
-      <div class="lg:col-span-7 relative h-96 w-full rounded-2xl overflow-hidden border border-brand-gold/15 shadow-xl">
-        <img src="/images/hero_gift_box.png" alt="Boutique custom wrapping and cards" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+      <div class="lg:col-span-7 relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-brand-gold/15 shadow-xl">
+        <img src="/images/hero_gift_box.png" alt="Boutique custom wrapping and cards" class="w-full h-full object-cover object-center" loading="lazy" decoding="async" />
       </div>
     </section>
 
