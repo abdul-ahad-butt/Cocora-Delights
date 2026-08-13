@@ -149,6 +149,33 @@ app.post('/api/orders', async (c) => {
   }
 });
 
+// POST admin login
+app.post('/api/admin/login', async (c) => {
+  try {
+    const body = await c.req.json();
+    const { username, password } = body;
+
+    const validUsername = c.env.ADMIN_USERNAME || 'admin';
+    const validPassword = c.env.ADMIN_PASSWORD || 'password';
+
+    if (username === validUsername && password === validPassword) {
+      const payload = {
+        username: username,
+        exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24, // 24 hours
+      };
+      
+      const secret = c.env.JWT_SECRET || 'default_secret';
+      const token = await sign(payload, secret);
+      
+      return c.json({ success: true, token });
+    } else {
+      return c.json({ success: false, error: 'Invalid credentials' }, 401);
+    }
+  } catch (error: any) {
+    return c.json({ success: false, error: error.message }, 500);
+  }
+});
+
 // GET all orders for Admin Panel (unauthenticated as requested by diagnostic prompt)
 app.get('/api/orders', async (c) => {
   try {
