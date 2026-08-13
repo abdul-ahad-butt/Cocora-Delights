@@ -3,13 +3,13 @@ packages:
   - "backend"
   - "admin-panel"
 
-onlyBuiltDependencies:
-  - "@parcel/watcher"
-  - "esbuild"
-  - "sharp"
-  - "unrs-resolver"
-  - "vue-demi"
-  - "workerd"
+allowBuilds:
+  "@parcel/watcher": true
+  "esbuild": true
+  "sharp": true
+  "unrs-resolver": true
+  "vue-demi": true
+  "workerd": true
 
 minimumReleaseAgeExclude:
   - '@nuxt/ui@4.10.0'
