@@ -10,13 +10,8 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         <!-- Logo -->
-        <NuxtLink to="/" class="flex flex-col items-center group">
-          <span class="font-serif text-2xl tracking-[0.25em] text-brand-cocoa-dark font-semibold group-hover:text-brand-gold transition-colors duration-300">
-            COCORA
-          </span>
-          <span class="text-[9px] tracking-[0.4em] text-brand-caramel uppercase -mt-1 pl-1">
-             Delights
-          </span>
+        <NuxtLink to="/" class="flex items-center group">
+          <img src="/images/cocora-delights-logo.png" alt="Cocora Delights - Artisanal Chocolates" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
         </NuxtLink>
 
         <nav class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest text-brand-cocoa-dark/80">
@@ -92,7 +87,8 @@
         leave-to-class="translate-x-full"
       >
         <div v-if="isMobileMenuOpen" class="fixed top-0 right-0 min-h-[100dvh] w-4/5 max-w-sm bg-brand-bg shadow-2xl z-50 md:hidden flex flex-col overflow-y-auto touch-pan-y" style="-webkit-overflow-scrolling: touch; padding-bottom: env(safe-area-inset-bottom);">
-          <div class="px-4 py-6 flex justify-end">
+          <div class="px-4 py-6 flex items-center justify-between">
+            <img src="/images/cocora-delights-logo.png" alt="Cocora Delights - Artisanal Chocolates" class="h-8 w-auto object-contain pl-2" />
             <button @click="isMobileMenuOpen = false" class="p-3 min-w-[48px] min-h-[48px] flex items-center justify-center text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300" aria-label="Close Menu">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -249,10 +245,9 @@
       <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
         <!-- Brand Story Column -->
         <div class="space-y-6">
-          <div class="flex flex-col">
-            <span class="text-xl tracking-[0.25em] text-brand-cream font-bold">COCORA</span>
-            <span class="text-[9px] tracking-[0.4em] text-brand-gold uppercase pl-0.5"> Delights</span>
-          </div>
+          <NuxtLink to="/" class="flex items-center">
+            <img src="/images/cocora-delights-logo.png" alt="Cocora Delights - Artisanal Chocolates" class="h-14 md:h-16 w-auto object-contain" />
+          </NuxtLink>
           <p class="font-sans text-xs leading-relaxed text-brand-cream/70 text-justify">
             We craft luxurious chocolates made with carefully selected ingredients. Each creation is designed not only to taste exceptional but to become a treasured part of your celebration across Pakistan and the Middle East.
           </p>
