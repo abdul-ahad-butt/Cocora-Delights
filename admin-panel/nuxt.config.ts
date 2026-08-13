@@ -13,6 +13,14 @@ export default defineNuxtConfig({
     }
   },
 
+  nitro: {
+    preset: 'cloudflare-pages-static',
+    output: {
+      dir: '.output',
+      publicDir: '.output/public'
+    }
+  },
+
   colorMode: {
     preference: 'dark',
     fallback: 'dark'
