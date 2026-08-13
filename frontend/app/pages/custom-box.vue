@@ -3,7 +3,7 @@
     <!-- Header Page Description -->
     <div class="text-center space-y-4 max-w-2xl mx-auto">
       <span class="text-xs font-sans tracking-[0.25em] text-brand-caramel uppercase font-semibold">CRAFTING STUDIO</span>
-      <h1 class="font-serif text-3xl md:text-5xl text-brand-cocoa-dark leading-tight">
+      <h1 class="font-serif text-2xl sm:text-3xl md:text-5xl text-brand-cocoa-dark leading-snug">
         Create a Box as Unique as Your Celebration
       </h1>
       <p class="font-sans text-sm text-brand-text/70 leading-relaxed">
@@ -124,10 +124,10 @@
 
         <!-- Customizer Utility Actions -->
         <div class="flex items-center space-x-4">
-          <button @click="autofillBox" class="px-5 py-2.5 border border-brand-gold/30 rounded-full text-xs text-brand-cocoa-dark hover:bg-brand-cream font-medium tracking-wide">
+          <button @click="autofillBox" class="px-5 py-2.5 min-h-[48px] border border-brand-gold/30 rounded-full text-xs text-brand-cocoa-dark hover:bg-brand-cream font-medium tracking-wide">
             Auto-fill Assortment
           </button>
-          <button @click="clearBox" class="px-5 py-2.5 border border-brand-burgundy/20 rounded-full text-xs text-brand-burgundy hover:bg-brand-burgundy/5 font-medium tracking-wide">
+          <button @click="clearBox" class="px-5 py-2.5 min-h-[48px] border border-brand-burgundy/20 rounded-full text-xs text-brand-burgundy hover:bg-brand-burgundy/5 font-medium tracking-wide">
             Clear Box
           </button>
         </div>
@@ -139,7 +139,7 @@
         <!-- Step 1: Box Size -->
         <div class="space-y-3.5">
           <h3 class="font-serif text-base text-brand-cocoa-dark font-bold tracking-wide">1. Select Box Size</h3>
-          <div class="grid grid-cols-3 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <button 
               v-for="opt in sizeOptions" 
               :key="opt.size"
@@ -156,7 +156,7 @@
         <!-- Step 2: Packaging Style -->
         <div class="space-y-3.5">
           <h3 class="font-serif text-base text-brand-cocoa-dark font-bold tracking-wide">2. Choose Presentation Theme</h3>
-          <div class="grid grid-cols-3 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <button 
               v-for="color in themeOptions" 
               :key="color.name"
@@ -205,7 +205,7 @@
         <!-- Add custom box to cart -->
         <button 
           @click="addBoxToCart"
-          class="w-full py-4 rounded-full text-xs tracking-widest font-semibold btn-luxury-cocoa uppercase shadow-lg transition-transform duration-300"
+          class="w-full py-4 min-h-[48px] rounded-full text-xs tracking-widest font-semibold btn-luxury-cocoa uppercase shadow-lg transition-transform duration-300"
           :disabled="selectedCount === 0"
           :class="selectedCount === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:scale-[1.01]'"
         >

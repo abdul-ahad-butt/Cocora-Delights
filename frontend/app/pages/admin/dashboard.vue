@@ -1,11 +1,11 @@
 <template>
-  <div class="min-h-screen bg-brand-cocoa-dark p-8 text-brand-cream font-sans animate-fade-in">
+  <div class="min-h-screen bg-brand-cocoa-dark p-4 sm:p-6 lg:p-8 text-brand-cream font-sans animate-fade-in">
     <div class="max-w-7xl mx-auto space-y-8">
       
       <!-- Header -->
       <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 border-b border-brand-gold/20 pb-6">
         <div>
-          <h1 class="font-serif text-4xl font-bold text-brand-cream">Admin Dashboard</h1>
+          <h1 class="font-serif text-3xl sm:text-4xl font-bold text-brand-cream">Admin Dashboard</h1>
           <p class="text-sm text-brand-gold mt-2 tracking-widest uppercase">Overview of Recent Orders & Submissions</p>
         </div>
         <button 

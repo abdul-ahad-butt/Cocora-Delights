@@ -17,7 +17,7 @@
           <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
           <span>A luxury gifting experience</span>
         </span>
-        <h1 class="font-serif text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-brand-cocoa-dark leading-[1.05] font-bold">
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-brand-cocoa-dark leading-[1.05] font-bold">
           Beautifully Crafted.<br />Thoughtfully Gifted.
         </h1>
         <p class="font-sans text-sm md:text-base text-brand-text/80 leading-relaxed max-w-lg">
@@ -49,7 +49,7 @@
     <!-- Brand Story / Heritage Segment -->
     <section id="story" class="max-w-4xl mx-auto px-6 text-center space-y-8 scroll-mt-24 relative z-10">
       <span class="text-xs font-sans tracking-[0.25em] text-brand-gold uppercase font-bold">HERITAGE & BELIEF</span>
-      <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark italic">"Our journey began with one simple belief: that chocolate is not merely a confection, but a bridge of affection."</h2>
+      <h2 class="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark italic leading-snug">"Our journey began with one simple belief: that chocolate is not merely a confection, but a bridge of affection."</h2>
       <div class="w-16 h-px bg-brand-gold mx-auto"></div>
       <p class="font-sans text-xs md:text-sm text-brand-text/75 leading-relaxed max-w-2xl mx-auto">
         Every truffle we mold, every ribbon we hand-tie, and every message card we write is crafted with strict devotion. We combine imported Belgian cocoa with local treasures—emerald pistachios from the orchards and honeyed dates from the groves—to elevate your celebrations into enduring memories.
@@ -60,7 +60,7 @@
     <section class="max-w-7xl mx-auto px-4 md:px-6 2xl:px-8 space-y-10 md:space-y-12 relative z-10">
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE FLAVORS</span>
-        <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Explore Our Ingredients</h2>
+        <h2 class="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold leading-snug">Explore Our Ingredients</h2>
         <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
@@ -90,14 +90,14 @@
       <div class="max-w-7xl mx-auto space-y-16">
         <div class="text-center space-y-4 max-w-xl mx-auto">
           <span class="text-xs font-sans tracking-[0.25em] text-brand-gold uppercase font-bold">THE CREATIVE JOURNEY</span>
-          <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cream font-bold">How to Create Your Memorable Gift</h2>
+          <h2 class="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-brand-cream font-bold leading-snug">How to Create Your Memorable Gift</h2>
           <p class="font-sans text-xs text-brand-cream/70 leading-relaxed">
             We don't just package chocolates. We invite you to express your love, congratulations, or gratitude through a personalized curation process.
           </p>
         </div>
 
         <!-- The Journey Roadmap -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8 relative">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8 relative">
           <div v-for="(step, idx) in journeySteps" :key="idx" class="flex flex-col items-center text-center space-y-4 relative">
             <!-- Step index circle -->
             <div class="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center bg-brand-cocoa-light text-brand-gold font-serif font-bold text-sm shadow-md">
@@ -123,11 +123,11 @@
     <section id="occasions" class="max-w-7xl mx-auto px-4 md:px-6 2xl:px-8 space-y-10 md:space-y-12 scroll-mt-24 relative z-10">
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE CELEBRATIONS</span>
-        <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Perfect For Every Occasion</h2>
+        <h2 class="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold leading-snug">Perfect For Every Occasion</h2>
         <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         <div 
           v-for="occ in occasionsList" 
           :key="occ.name" 
@@ -160,7 +160,7 @@
         <!-- Text details -->
         <div class="lg:col-span-7 space-y-6 text-left">
           <span class="px-3 py-1 bg-brand-burgundy text-brand-cream text-[10px] font-bold rounded-full tracking-widest uppercase inline-block">LIMITED EDITION</span>
-          <h2 class="font-serif text-2xl md:text-4xl lg:text-5xl text-brand-cocoa-dark leading-tight font-bold">
+          <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-brand-cocoa-dark leading-snug font-bold">
             The Summer Pistachio Collection
           </h2>
           <p class="font-sans text-xs md:text-sm text-brand-text/75 leading-relaxed">
@@ -192,7 +192,7 @@
     <section id="collections" class="max-w-7xl mx-auto px-4 md:px-6 2xl:px-8 space-y-10 md:space-y-12 scroll-mt-24 relative z-10">
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE SELECTIONS</span>
-        <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Featured Signature Collections</h2>
+        <h2 class="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold leading-snug">Featured Signature Collections</h2>
         <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 
@@ -238,7 +238,7 @@
         
         <div class="text-center space-y-3 max-w-xl mx-auto">
           <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">NO PLACE FOR PLACEHOLDERS</span>
-          <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold">Uncompromising Quality</h2>
+          <h2 class="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-brand-cocoa-dark font-bold leading-snug">Uncompromising Quality</h2>
           <p class="font-sans text-xs text-brand-text/60 leading-relaxed">
             Every element of a Cocora chocolate is selected for its sensory richness. We believe in visual beauty and clean, organic craftsmanship.
           </p>
@@ -248,7 +248,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div class="lg:col-span-5 space-y-6 text-left order-2 lg:order-1">
             <span class="text-xs font-sans tracking-[0.2em] text-brand-gold uppercase font-semibold">STONE GROUND</span>
-            <h3 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Premium Emerald Pistachios</h3>
+            <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-cocoa-dark font-bold leading-snug">Premium Emerald Pistachios</h3>
             <p class="font-sans text-xs md:text-sm text-brand-text/80 leading-relaxed">
               Harvested at their vibrant green peak and stone-ground over 24 hours to create an incredibly silky, intensely flavored praline filling that melts like butter on the tongue.
             </p>
@@ -265,7 +265,7 @@
           </div>
           <div class="lg:col-span-5 space-y-6 text-left">
             <span class="text-xs font-sans tracking-[0.2em] text-brand-gold uppercase font-semibold">BELGIAN SOURCING</span>
-            <h3 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Artisanal Dark Belgian Cocoa</h3>
+            <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-cocoa-dark font-bold leading-snug">Artisanal Dark Belgian Cocoa</h3>
             <p class="font-sans text-xs md:text-sm text-brand-text/80 leading-relaxed">
               Our dark chocolate is carefully balanced at 72% single-origin cacao solids, resulting in rich roasted notes with subtle fruit and woody undertones.
             </p>
@@ -279,7 +279,7 @@
     <section class="max-w-7xl mx-auto px-6 2xl:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
       <div class="lg:col-span-5 space-y-6 text-left">
         <span class="text-xs font-sans tracking-[0.25em] text-brand-caramel uppercase font-semibold">THE ART OF UNWRAPPING</span>
-        <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold leading-tight">
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-cocoa-dark font-bold leading-snug">
           Exquisite Packaging Worth Keeping
         </h2>
         <p class="font-sans text-xs md:text-sm text-brand-text/75 leading-relaxed">
@@ -311,7 +311,7 @@
       <div class="max-w-7xl mx-auto px-6 space-y-12">
         <div class="text-center space-y-3">
           <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">THE TIMELINE</span>
-          <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Our Craftsmanship Process</h2>
+          <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-cocoa-dark font-bold leading-snug">Our Craftsmanship Process</h2>
           <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
         </div>
 
@@ -334,7 +334,7 @@
 
         <div class="lg:col-span-7 space-y-6 text-left order-1 lg:order-2">
           <span class="text-xs font-sans tracking-[0.25em] text-brand-gold uppercase font-bold">BESPOKE SERVICES</span>
-          <h2 class="font-serif text-3xl md:text-5xl text-brand-cream leading-tight font-bold">
+          <h2 class="font-serif text-2xl sm:text-3xl md:text-5xl text-brand-cream leading-snug font-bold">
             Corporate Gifting & Custom Milestones
           </h2>
           <p class="font-sans text-xs md:text-sm text-brand-cream/70 leading-relaxed">
@@ -361,7 +361,7 @@
       <div class="max-w-7xl mx-auto space-y-12">
         <div class="text-center space-y-3">
           <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">CLIENT HEARTS</span>
-          <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Endorsements</h2>
+          <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-cocoa-dark font-bold leading-snug">Endorsements</h2>
           <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
         </div>
 
@@ -386,7 +386,7 @@
     <section id="faq" class="max-w-3xl mx-auto px-6 space-y-12 scroll-mt-24 relative z-10">
       <div class="text-center space-y-3">
         <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase font-bold">FREQUENT INQUIRIES</span>
-        <h2 class="font-serif text-3xl md:text-4xl text-brand-cocoa-dark font-bold">Frequently Asked Questions</h2>
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-cocoa-dark font-bold leading-snug">Frequently Asked Questions</h2>
         <div class="w-12 h-px bg-brand-gold mx-auto mt-4"></div>
       </div>
 

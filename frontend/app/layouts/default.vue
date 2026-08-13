@@ -7,7 +7,7 @@
 
     <!-- Header Navigation -->
     <header class="sticky top-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-gold/10 transition-all duration-300">
-      <div class="max-w-7xl mx-auto px-4 md:px-6 2xl:px-8 h-20 flex items-center justify-between">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         <!-- Logo -->
         <NuxtLink to="/" class="flex flex-col items-center group">
@@ -32,7 +32,7 @@
           <!-- Cart Button -->
           <button 
             @click="isCartOpen = true" 
-            class="relative p-3 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300"
+            class="relative p-3 min-w-[48px] min-h-[48px] flex items-center justify-center text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300"
             aria-label="Open Cart"
           >
             <!-- SVG Cart Icon -->
@@ -58,7 +58,7 @@
           <!-- Mobile Menu Toggle -->
           <button 
             @click="isMobileMenuOpen = !isMobileMenuOpen" 
-            class="md:hidden p-3 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300"
+            class="md:hidden p-3 min-w-[48px] min-h-[48px] flex items-center justify-center text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300"
             aria-label="Toggle Menu"
           >
             <svg v-if="!isMobileMenuOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -91,9 +91,9 @@
         leave-from-class="translate-x-0"
         leave-to-class="translate-x-full"
       >
-        <div v-if="isMobileMenuOpen" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-brand-bg shadow-2xl z-50 md:hidden flex flex-col overflow-y-auto" style="padding-bottom: env(safe-area-inset-bottom);">
+        <div v-if="isMobileMenuOpen" class="fixed top-0 right-0 min-h-[100dvh] w-4/5 max-w-sm bg-brand-bg shadow-2xl z-50 md:hidden flex flex-col overflow-y-auto touch-pan-y" style="-webkit-overflow-scrolling: touch; padding-bottom: env(safe-area-inset-bottom);">
           <div class="px-4 py-6 flex justify-end">
-            <button @click="isMobileMenuOpen = false" class="p-3 text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300" aria-label="Close Menu">
+            <button @click="isMobileMenuOpen = false" class="p-3 min-w-[48px] min-h-[48px] flex items-center justify-center text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300" aria-label="Close Menu">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
@@ -140,7 +140,7 @@
       leave-from-class="translate-x-0"
       leave-to-class="translate-x-full"
     >
-      <div v-if="isCartOpen" class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-brand-bg shadow-2xl z-50 flex flex-col border-l border-brand-gold/10" style="padding-bottom: env(safe-area-inset-bottom);">
+      <div v-if="isCartOpen" class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-brand-bg shadow-2xl z-50 flex flex-col border-l border-brand-gold/10 min-h-[100dvh] overflow-y-auto touch-pan-y" style="-webkit-overflow-scrolling: touch; padding-bottom: env(safe-area-inset-bottom);">
         <!-- Drawer Header -->
         <div class="p-6 border-b border-brand-gold/10 flex items-center justify-between bg-brand-cream">
           <div class="flex items-center space-x-3">
@@ -149,7 +149,7 @@
               {{ cartCount }} {{ cartCount === 1 ? 'item' : 'items' }}
             </span>
           </div>
-          <button @click="isCartOpen = false" class="text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark p-3 -mr-3">
+          <button @click="isCartOpen = false" class="text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark p-3 min-w-[48px] min-h-[48px] flex items-center justify-center -mr-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
@@ -184,7 +184,7 @@
             >
               <!-- Item Image -->
               <div class="w-20 h-20 bg-brand-cream border border-brand-gold/10 rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
-                <img :src="item.image" :alt="item.name" class="w-full h-full object-cover" />
+                <img :src="item.image" :alt="item.name" class="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
 
               <!-- Item Details -->
@@ -204,15 +204,15 @@
                 <div class="flex items-center justify-between mt-2">
                   <!-- Quantity Selector -->
                   <div class="flex items-center border border-brand-gold/20 rounded-full bg-brand-cream text-xs">
-                    <button @click="updateQty(index, -1)" class="px-3 py-2 min-h-9 text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark flex items-center justify-center">-</button>
+                    <button @click="updateQty(index, -1)" class="px-3 py-2 min-w-[48px] min-h-[48px] text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark flex items-center justify-center">-</button>
                     <span class="px-2 font-medium text-brand-cocoa-dark min-w-5 text-center">{{ item.quantity }}</span>
-                    <button @click="updateQty(index, 1)" class="px-3 py-2 min-h-9 text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark flex items-center justify-center">+</button>
+                    <button @click="updateQty(index, 1)" class="px-3 py-2 min-w-[48px] min-h-[48px] text-brand-cocoa-dark/60 hover:text-brand-cocoa-dark flex items-center justify-center">+</button>
                   </div>
 
                   <!-- Price & Remove -->
                   <div class="flex items-center space-x-1">
                     <span class="text-xs font-serif font-semibold text-brand-cocoa-dark mr-2">{{ formatPrice(item.price * item.quantity) }}</span>
-                    <button @click="removeFromCart(index)" class="text-brand-burgundy hover:text-brand-burgundy/80 p-3" aria-label="Remove item">
+                    <button @click="removeFromCart(index)" class="text-brand-burgundy hover:text-brand-burgundy/80 p-3 min-w-[48px] min-h-[48px] flex items-center justify-center" aria-label="Remove item">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                       </svg>
@@ -236,7 +236,7 @@
           <NuxtLink 
             to="/checkout" 
             @click="isCartOpen = false" 
-            class="block w-full text-center px-6 py-3.5 rounded-full text-xs tracking-widest font-medium btn-luxury-cocoa uppercase shadow-md"
+            class="block w-full text-center px-6 py-3.5 min-h-[48px] rounded-full text-xs tracking-widest font-medium btn-luxury-cocoa uppercase shadow-md flex items-center justify-center"
           >
             PROCEED TO CHECKOUT
           </NuxtLink>
@@ -245,8 +245,8 @@
     </transition>
 
     <!-- Footer -->
-    <footer class="bg-brand-cocoa-dark text-brand-cream border-t border-brand-gold/15 py-12 md:py-16 px-4 md:px-6 2xl:px-8 font-serif">
-      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer class="bg-brand-cocoa-dark text-brand-cream border-t border-brand-gold/15 py-12 md:py-16 px-4 sm:px-6 lg:px-8 font-serif">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
         <!-- Brand Story Column -->
         <div class="space-y-6">
           <div class="flex flex-col">
@@ -318,7 +318,7 @@
               />
               <button 
                 type="submit" 
-                class="absolute right-2 top-2 p-1 text-brand-gold hover:text-brand-cream transition-colors duration-300"
+                class="absolute right-1 top-1 p-2 min-w-[40px] min-h-[40px] flex items-center justify-center text-brand-gold hover:text-brand-cream transition-colors duration-300"
                 aria-label="Subscribe"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">

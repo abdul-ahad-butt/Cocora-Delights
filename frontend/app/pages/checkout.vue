@@ -29,12 +29,12 @@
           v-if="shippingForm.paymentMethod === 'whatsapp'"
           :href="whatsappUrl" 
           target="_blank" 
-          class="w-full py-4 rounded-full text-xs tracking-widest font-semibold bg-brand-success text-brand-cream hover:bg-brand-success/90 uppercase text-center flex items-center justify-center space-x-2 shadow"
+          class="w-full py-4 min-h-[48px] rounded-full text-xs tracking-widest font-semibold bg-brand-success text-brand-cream hover:bg-brand-success/90 uppercase text-center flex items-center justify-center space-x-2 shadow"
         >
           <span>Connect with Concierge on WhatsApp</span>
         </a>
         
-        <NuxtLink to="/" class="w-full py-4 rounded-full text-xs tracking-widest font-semibold btn-luxury-gold uppercase text-center">
+        <NuxtLink to="/" class="w-full py-4 min-h-[48px] rounded-full text-xs tracking-widest font-semibold btn-luxury-gold uppercase text-center flex items-center justify-center">
           Return to Boutique Home
         </NuxtLink>
       </div>
@@ -114,7 +114,7 @@
               <button 
                 type="button" 
                 @click="shippingForm.paymentMethod = 'whatsapp'"
-                class="p-4 min-h-[44px] rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
+                class="p-4 min-h-[48px] rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
                 :class="shippingForm.paymentMethod === 'whatsapp' ? 'border-brand-gold bg-brand-bg font-semibold' : 'border-brand-gold/20 hover:border-brand-gold'"
               >
                 <!-- Whatsapp Icon representation -->
@@ -125,7 +125,7 @@
               <button 
                 type="button" 
                 @click="shippingForm.paymentMethod = 'card'"
-                class="p-4 min-h-[44px] rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
+                class="p-4 min-h-[48px] rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
                 :class="shippingForm.paymentMethod === 'card' ? 'border-brand-gold bg-brand-bg font-semibold' : 'border-brand-gold/20 hover:border-brand-gold'"
               >
                 <span class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xs font-bold font-sans">💳</span>
@@ -135,7 +135,7 @@
               <button 
                 type="button" 
                 @click="shippingForm.paymentMethod = 'online_pakistan'"
-                class="p-4 min-h-[44px] rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
+                class="p-4 min-h-[48px] rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center space-y-2"
                 :class="shippingForm.paymentMethod === 'online_pakistan' ? 'border-brand-gold bg-brand-bg font-semibold' : 'border-brand-gold/20 hover:border-brand-gold'"
               >
                 <span class="w-6 h-6 rounded-full bg-brand-caramel/20 text-brand-caramel flex items-center justify-center text-xs font-bold font-sans">💳</span>
@@ -204,7 +204,7 @@
             <span v-if="submitError" class="text-xs text-brand-burgundy font-medium animate-pulse">{{ submitError }}</span>
             <button 
               type="submit" 
-              class="w-full py-4 min-h-[44px] rounded-full text-xs tracking-widest font-semibold btn-luxury-cocoa uppercase shadow-lg text-center"
+              class="w-full py-4 min-h-[48px] rounded-full text-xs tracking-widest font-semibold btn-luxury-cocoa uppercase shadow-lg text-center"
               :disabled="submitting"
             >
               {{ submitting ? 'Processing Order...' : shippingForm.paymentMethod === 'whatsapp' ? 'Place Order & Open WhatsApp' : 'Submit Luxury Order' }}
@@ -224,7 +224,7 @@
             >
               <!-- Small thumbnail -->
               <div class="w-12 h-12 bg-brand-bg rounded overflow-hidden shrink-0 flex items-center justify-center border border-brand-gold/5">
-                <img :src="item.image" :alt="item.name" class="w-full h-full object-cover" />
+                <img :src="item.image" :alt="item.name" class="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
               <div class="grow">
                 <h4 class="font-serif text-brand-cocoa-dark font-bold line-clamp-1">{{ item.name }}</h4>
