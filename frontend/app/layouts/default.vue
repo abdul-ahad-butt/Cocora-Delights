@@ -11,7 +11,7 @@
         
         <!-- Logo -->
         <NuxtLink to="/" class="flex items-center group">
-          <img src="/logo.png" alt="Cocora Delights" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+          <img src="/logo.jpg" alt="Cocora Delights" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
         </NuxtLink>
 
         <nav class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest text-brand-cocoa-dark/80">
@@ -88,7 +88,7 @@
       >
         <div v-if="isMobileMenuOpen" class="fixed top-0 right-0 min-h-[100dvh] w-4/5 max-w-sm bg-brand-bg shadow-2xl z-50 md:hidden flex flex-col overflow-y-auto touch-pan-y" style="-webkit-overflow-scrolling: touch; padding-bottom: env(safe-area-inset-bottom);">
           <div class="px-4 py-6 flex items-center justify-between">
-            <img src="/logo.png" alt="Cocora Delights" class="h-8 w-auto object-contain pl-2" />
+            <img src="/logo.jpg" alt="Cocora Delights" class="h-8 w-auto object-contain pl-2" />
             <button @click="isMobileMenuOpen = false" class="p-3 min-w-[48px] min-h-[48px] flex items-center justify-center text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300" aria-label="Close Menu">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -246,7 +246,7 @@
         <!-- Brand Story Column -->
         <div class="space-y-6">
           <NuxtLink to="/" class="inline-block mb-4">
-            <img src="/logo.png" alt="Cocora Delights" class="h-12 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
+            <img src="/logo.jpg" alt="Cocora Delights" class="h-12 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
           </NuxtLink>
           <p class="font-sans text-xs leading-relaxed text-brand-cream/70 text-justify">
             We craft luxurious chocolates made with carefully selected ingredients. Each creation is designed not only to taste exceptional but to become a treasured part of your celebration across Pakistan and the Middle East.
