@@ -10,8 +10,8 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
         
         <!-- Logo -->
-        <NuxtLink to="/" class="group flex items-center justify-center bg-transparent">
-          <img src="/logo.jpg" alt="Cocora Delights" class="h-14 sm:h-16 md:h-[72px] w-auto object-contain mix-blend-multiply" />
+        <NuxtLink to="/" class="group flex items-center justify-center">
+          <img src="/logo-clean.png" alt="Cocora Delights" class="h-12 md:h-[3.5rem] w-auto object-contain" />
         </NuxtLink>
 
         <nav class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest text-brand-cocoa-dark/80">
@@ -88,8 +88,8 @@
       >
         <div v-if="isMobileMenuOpen" class="fixed top-0 right-0 min-h-[100dvh] w-4/5 max-w-sm bg-brand-bg shadow-2xl z-50 md:hidden flex flex-col overflow-y-auto touch-pan-y" style="-webkit-overflow-scrolling: touch; padding-bottom: env(safe-area-inset-bottom);">
           <div class="px-4 py-6 flex items-center justify-between">
-            <NuxtLink to="/" class="group w-10 h-10 overflow-hidden flex items-center justify-center">
-              <img src="/logo.jpg" alt="Cocora Delights" class="w-full h-full object-cover object-top mix-blend-multiply" />
+            <NuxtLink to="/" class="group flex items-center justify-center">
+              <img src="/logo-clean.png" alt="Cocora Delights" class="h-10 w-auto object-contain" />
             </NuxtLink>
             <button @click="isMobileMenuOpen = false" class="p-3 min-w-[48px] min-h-[48px] flex items-center justify-center text-brand-cocoa-dark hover:text-brand-gold transition-colors duration-300" aria-label="Close Menu">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
