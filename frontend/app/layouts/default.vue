@@ -248,8 +248,14 @@
         <!-- Brand Story Column -->
         <div class="space-y-6">
           <NuxtLink to="/" class="flex flex-col items-start mb-4 opacity-90 hover:opacity-100 transition-opacity duration-300">
-            <div class="w-20 h-20 sm:w-24 sm:h-24 overflow-hidden mb-3 flex items-center justify-center bg-[#180C08]">
-              <img src="/logo.jpg" alt="CD Monogram" class="w-full h-full object-cover object-top mix-blend-screen filter contrast-125 brightness-110" />
+            <!-- Scaled Transparent CD Monogram -->
+            <div class="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center bg-transparent mb-3">
+              <img 
+                src="/logo.png" 
+                alt="Cocora Delights Emblem" 
+                class="w-full h-full object-contain drop-shadow-md"
+                style="mask-image: radial-gradient(circle, black 70%, transparent 100%); -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);"
+              />
             </div>
             <span class="text-xs sm:text-sm tracking-[0.25em] text-[#C3A06B] font-serif uppercase mt-2">
               COCORA DELIGHTS
