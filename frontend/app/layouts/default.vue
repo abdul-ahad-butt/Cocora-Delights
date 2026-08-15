@@ -249,11 +249,11 @@
         <div class="space-y-6">
           <NuxtLink to="/" class="flex flex-col items-start mb-4 opacity-90 hover:opacity-100 transition-opacity duration-300">
             <!-- Prominent Footer Logo -->
-            <div class="w-40 sm:w-48 md:w-52 h-auto flex items-center justify-start bg-transparent mb-3">
+            <div class="w-40 sm:w-48 md:w-52 h-24 sm:h-28 md:h-32 overflow-hidden flex items-center justify-center bg-[#1C0E0A] mb-3">
               <img 
                 src="/logo.png" 
-                alt="Cocora Delights Logo" 
-                class="w-full h-auto object-contain mix-blend-screen drop-shadow-md"
+                alt="CD Monogram" 
+                class="w-full h-[140%] object-cover object-top mix-blend-multiply"
               />
             </div>
             <span class="text-xs sm:text-sm tracking-[0.25em] text-[#C3A06B] font-serif uppercase mt-2">
