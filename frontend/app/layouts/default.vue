@@ -7,11 +7,11 @@
 
     <!-- Header Navigation -->
     <header class="sticky top-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-gold/10 transition-all duration-300">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
         
         <!-- Logo -->
-        <NuxtLink to="/" class="group w-10 h-10 sm:w-12 sm:h-12 overflow-hidden flex items-center justify-center">
-          <img src="/logo.jpg" alt="Cocora Delights" class="w-full h-full object-cover object-top mix-blend-multiply" />
+        <NuxtLink to="/" class="group flex items-center justify-center bg-transparent">
+          <img src="/logo.jpg" alt="Cocora Delights" class="h-14 sm:h-16 md:h-[72px] w-auto object-contain mix-blend-multiply" />
         </NuxtLink>
 
         <nav class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest text-brand-cocoa-dark/80">
@@ -248,13 +248,12 @@
         <!-- Brand Story Column -->
         <div class="space-y-6">
           <NuxtLink to="/" class="flex flex-col items-start mb-4 opacity-90 hover:opacity-100 transition-opacity duration-300">
-            <!-- Scaled Transparent CD Monogram -->
-            <div class="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center bg-transparent mb-3">
+            <!-- Prominent Footer Logo -->
+            <div class="w-40 sm:w-48 md:w-52 h-auto flex items-center justify-start bg-transparent mb-3">
               <img 
                 src="/logo.png" 
-                alt="Cocora Delights Emblem" 
-                class="w-full h-full object-contain drop-shadow-md"
-                style="mask-image: radial-gradient(circle, black 70%, transparent 100%); -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);"
+                alt="Cocora Delights Logo" 
+                class="w-full h-auto object-contain mix-blend-screen drop-shadow-md"
               />
             </div>
             <span class="text-xs sm:text-sm tracking-[0.25em] text-[#C3A06B] font-serif uppercase mt-2">
